@@ -1,0 +1,39 @@
+{
+  "name": "suntech-recycle",
+  "version": "1.0.0",
+  "private": true,
+  "description": "SunTech Recycle — certified electronics recycling, ITAD & secure data destruction across Greater Montréal and Québec.",
+  "type": "module",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "5.2.7",
+    "@fontsource/ibm-plex-sans": "5.2.8",
+    "@fontsource/space-grotesk": "5.2.10",
+    "leaflet": "1.9.4",
+    "next": "15.5.19",
+    "react": "19.2.7",
+    "react-dom": "19.2.7"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "3.3.5",
+    "@tailwindcss/postcss": "4.3.1",
+    "@types/leaflet": "1.9.21",
+    "@types/node": "22.18.6",
+    "@types/react": "19.2.17",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.4",
+    "eslint-config-next": "15.5.19",
+    "tailwindcss": "4.3.1",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "packageManager": "pnpm@9.15.0"
+}

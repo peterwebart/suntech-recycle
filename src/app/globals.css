@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Design tokens — SunTech Recycle
+   Forest-green industrial-trust palette with a single signal-orange accent
+   reserved for "proof" moments (the certificate, the final CTA).
+   ────────────────────────────────────────────────────────────────────────── */
+@theme {
+  --color-green: #0f6b3a;
+  --color-green-2: #2dbe60;
+  --color-forest: #0b2e1b;
+  --color-near-black: #0b0f0d;
+  --color-ink: #111111;
+  --color-ink-soft: #3c423d;
+  --color-orange: #f4a000;
+  --color-silver: #c9d1d3;
+  --color-light: #f8f8f5;
+  --color-paper: #ffffff;
+  --color-line: #e6e8e3;
+
+  --font-display: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Courier New", monospace;
+
+  --radius-card: 16px;
+  --radius-xl2: 24px;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem; /* offset sticky header for anchor links */
+  }
+  body {
+    margin: 0;
+    background: var(--color-light);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-size: 17px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--color-green-2) 30%, transparent);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* ── Scroll-reveal ──────────────────────────────────────────────────────────
+   Content is visible by default (no-JS safe). When the `.js` class is present
+   on <html> (added before paint), reveal elements start hidden and animate in
+   once observed. Reduced-motion users always see the final state. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ── Leaflet map surface tweaks ─────────────────────────────────────────────
+   Keep the controls and attribution on-brand and unobtrusive. */
+.leaflet-container {
+  font-family: var(--font-body);
+  background: #dfe6e2;
+}
+.leaflet-control-attribution {
+  font-size: 10px;
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+.leaflet-bar a {
+  color: var(--color-ink);
+}
