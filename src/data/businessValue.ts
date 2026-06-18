@@ -63,3 +63,55 @@ export const businessValue: ValueBlock[] = [
     ],
   },
 ];
+
+/* ── French overlay + locale getter ───────────────────────────────────────── */
+import type { Locale } from "@/i18n/config";
+import { deepMerge, type DeepPartial } from "@/i18n/merge";
+
+const businessValueFr: DeepPartial<ValueBlock>[] = [
+  {
+    title: "Réduction du risque",
+    lead: "Le matériel retiré est une responsabilité en matière de fuite de données tant qu’il n’est pas traité de façon prouvable. La destruction sécurisée des données et la disposition des actifs TI comblent cette faille.",
+    points: [
+      "Destruction sécurisée des données et des disques selon des normes reconnues",
+      "Protection contre les fuites de données et l’exposition juridique qu’elles créent",
+      "Soutien à la conformité pour la Loi 25, la LPRPDE et les cadres des clients",
+      "Information d’affaires confidentielle protégée de bout en bout",
+    ],
+  },
+  {
+    title: "Économies de coûts",
+    lead: "Le recyclage d’électronique d’entreprise devrait réduire les coûts, pas en ajouter. La collecte gratuite et la récupération d’actifs transforment la disposition en économies.",
+    points: [
+      "Possibilités de collecte gratuite pour les volumes admissibles",
+      "Coûts de disposition réduits et coûts d’entreposage éliminés",
+      "Meilleure utilisation de l’espace d’entrepôt et de bureau",
+      "Récupération d’actifs TI qui renvoie de la valeur à votre bilan",
+    ],
+  },
+  {
+    title: "ESG et durabilité",
+    lead: "Le recyclage d’électronique durable vous donne des chiffres vérifiés pour vos rapports ESG, RSE et de durabilité — pas des estimations.",
+    points: [
+      "Soutien aux programmes de durabilité corporative et ESG",
+      "Détournement de l’enfouissement et récupération des ressources",
+      "Recyclage responsable et gestion des rebuts électroniques",
+      "Rapports de détournement et de récupération prêts pour l’audit",
+    ],
+  },
+  {
+    title: "Rachat de rebuts et récupération d’actifs",
+    lead: "Certains actifs électroniques conservent une valeur résiduelle. Lorsque c’est le cas, nous la récupérons — par la remise en marché, la récupération de matières et le rachat de rebuts électroniques.",
+    points: [
+      "Récupération de la valeur des actifs et monétisation des actifs TI",
+      "Négoce de rebuts électroniques et récupération de matières",
+      "Rachat d’électronique sur l’équipement à valeur résiduelle",
+      "Services de récupération d’actifs avec rapport de règlement",
+    ],
+  },
+];
+
+export function getBusinessValue(locale: Locale): ValueBlock[] {
+  if (locale === "en") return businessValue;
+  return businessValue.map((b, i) => deepMerge(b, businessValueFr[i]));
+}

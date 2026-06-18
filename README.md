@@ -120,7 +120,7 @@ The site URL for canonicals/sitemap comes from `NEXT_PUBLIC_SITE_URL` (see `.env
 4. **Confirm the accuracy of each claim.** Per your confirmation that SunTech operates across Montréal, Toronto, Mexico and the US, the site now covers Canada, the United States and Mexico (country pages + major cities) plus a large Montréal-neighbourhood set. The copy is framed honestly — **free on-site collection across Greater Montréal**, and **secure, trackable mail-in ITAD / data destruction** elsewhere — rather than implying local pickup in every city. Keep that distinction true as you edit, and confirm city-level coordinates (currently approximate centroids) if you want exact map pins.
 5. **Set `NEXT_PUBLIC_SITE_URL`** to the production domain in the deployment environment.
 6. **Confirm R2v3 certificate details.** The certification copy is accurate but generic — add SunTech's specific certificate number and certifying body to `src/data/certification.ts` and the cert page before launch.
-7. **Bilingual EN/FR is the next phase (committed).** The site is currently English, built locale-ready. The next pass adds locale-routed `/en` and `/fr` URLs, `hreflang` alternates, a header language switcher (English default), and a full French translation of UI chrome and content — important for the Québec market and Bill 96. It's scoped as its own focused change rather than rushed alongside this ~90-page geo build, to keep the build green and the French high-quality. The geo copy is templated so French city pages come from the same templates once translations are added.
+7. **Bilingual EN/FR is implemented — but have the French reviewed.** English serves at the root (`/…`) and French at `/fr/…`, with a header/mobile language switcher and `hreflang` alternates. Chrome, navigation, footer, CTAs, the homepage, and the collection/contact pages are fully French; service, location and certification pages render French body content from the translated data layer, with a few page section-headings still in English (see the bilingual notes below). The French is professional Québec French written here — **have a native/legal reviewer confirm it for Bill 96 compliance** before relying on it publicly.
 8. **A note on geographic scale.** Programmatic city pages are valuable only while the copy stays truthful about what's serviceable where (local collection vs. secure mail-in). If you expand further, prefer provincial/state/regional hub pages over very thin per-city pages to stay clear of Google's doorway-page guidance.
 
 ---
@@ -134,8 +134,18 @@ The original brief lists Payload + Postgres. This iteration ships the content as
 - Pages already centralise data access through `getService`, `getLocation`, `serviceSlugs`, `locationSlugs`, etc. — swap those for Payload queries (and feed `generateStaticParams` from Payload) and the components don't change, because the shapes stay the same.
 - Keep `lib/seo.ts` as-is; it consumes the same typed objects.
 
-### 2. French / Bill 96 bilingual support
-The original prototype was bilingual (EN/FR). This rebuild ships **English-first** to keep the first build clean, but the structure is i18n-ready (content is centralised, copy isn't hardcoded across dozens of components). Recommended approach: locale routing (`/fr/...`) with the data modules (or Payload) holding both languages. Given Québec's Bill 96, French parity should be the first post-launch milestone.
+### 2. Bilingual EN/FR — implemented (with follow-ups)
+The site is now bilingual. Architecture and remaining work:
+
+- **URLs.** English is the default and serves **unprefixed at the root** (`/services`, `/locations/montreal`, …); French serves under **`/fr/…`**. `hreflang` alternates (`en`, `fr`, `x-default`) and a per-locale `canonical` are emitted on every page; the sitemap lists both locales with alternates.
+- **Switcher.** The header (desktop + mobile drawer) has an EN/FR toggle that swaps the current path's locale.
+- **How it's wired.** All UI strings live in `src/i18n/dictionaries.ts` (English authoritative, French overlaid with automatic per-string English fallback). The data layer is locale-aware via `getServices/getService`, `getBusinessValue`, `getR2v3`, and `getLocations/getLocation/getCountryList/getHubCities/citiesInCountry` (each taking a `locale`). Page bodies were extracted into `src/views/*` content components rendered by both the root (`en`) and `/fr` (`fr`) route files, so there's a single source per page.
+- **Coverage today.** Fully French: navigation, footer, all CTAs, the homepage (every section), and the collection and contact pages. French via the translated data layer: the five services, the four business-value blocks, the R2v3 certification content, the three country pages, all ~82 templated city/neighbourhood pages, and the eight Montréal hub intros.
+- **Remaining French follow-ups (all non-blocking; pages build and render):**
+  - A few **page-specific section headings** on the service-detail, certification, about, and country pages are still English literals (e.g. "Scope & capabilities", "Why it matters", "More than a recycler", "Tracked, documented, accountable"). They're easy to move into the dictionary.
+  - The **eight hub placeholder reviews** remain in English (they're slated for replacement with verified reviews anyway — see pre-launch item 1).
+  - `<html lang>` stays `"en"` for `/fr` pages because there's a single root layout. This is a minor accessibility/SEO nit; correcting it cleanly means moving to a `[locale]` root layout (a follow-up refactor). `hreflang`/`canonical` are already correct.
+  - Have the French **reviewed by a native/legal reader for Bill 96**.
 
 ---
 

@@ -1,40 +1,19 @@
 import { Container, Section, Eyebrow } from "@/components/ui/Container";
+import { getDictionary } from "@/i18n/dictionaries";
+import { type Locale } from "@/i18n/config";
 
-const pillars = [
-  {
-    title: "Data security",
-    body: "No drive leaves unaccounted for. Wiped to NIST 800-88 or physically destroyed, with a serialized certificate for every asset.",
-  },
-  {
-    title: "Regulatory compliance",
-    body: "Audit-ready documentation for Law 25, PIPEDA and your clients' frameworks — so your auditors see a closed loop.",
-  },
-  {
-    title: "ESG reporting",
-    body: "Verified diversion and recovery data you can drop straight into your sustainability report — not estimates.",
-  },
-  {
-    title: "Recovered value",
-    body: "Functional assets are remarketed, not shredded — returning value to your balance sheet instead of pure cost.",
-  },
-];
-
-export function Pillars() {
+export function Pillars({ locale = "en" }: { locale?: Locale }) {
+  const t = getDictionary(locale).pillars;
   return (
     <Section tone="paper" id="why">
       <Container>
         <div data-reveal className="max-w-[64ch]">
-          <Eyebrow>Why enterprises choose us</Eyebrow>
-          <h2 className="mt-3.5 text-[clamp(28px,4.4vw,44px)]">
-            You&rsquo;re not buying recycling. You&rsquo;re buying certainty.
-          </h2>
-          <p className="mt-4 text-[18px] text-ink-soft">
-            When retired hardware leaves your building, the liability
-            doesn&rsquo;t. We close the loop — provably.
-          </p>
+          <Eyebrow>{t.eyebrow}</Eyebrow>
+          <h2 className="mt-3.5 text-[clamp(28px,4.4vw,44px)]">{t.title}</h2>
+          <p className="mt-4 text-[18px] text-ink-soft">{t.intro}</p>
         </div>
         <div className="mt-13 grid gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">
-          {pillars.map((p, i) => (
+          {t.items.map((p, i) => (
             <div
               key={p.title}
               data-reveal

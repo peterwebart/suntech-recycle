@@ -1,36 +1,22 @@
 import { Container, Section } from "@/components/ui/Container";
 import { FeatureRow } from "@/components/sections/FeatureRow";
+import { getDictionary } from "@/i18n/dictionaries";
+import { type Locale } from "@/i18n/config";
 
-const industries = [
-  "Financial institutions",
-  "Data centres",
-  "Healthcare",
-  "Government",
-  "Telecommunications",
-  "Education",
-  "Manufacturing",
-  "Technology",
-  "Retail",
-  "Logistics",
-  "Energy",
-];
-
-export function Industries() {
+export function Industries({ locale = "en" }: { locale?: Locale }) {
+  const t = getDictionary(locale).industries;
   return (
     <Section tone="light" id="industries">
       <Container>
         <FeatureRow
-          kicker="Industries"
-          title="Built for regulated, high-stakes environments"
+          kicker={t.kicker}
+          title={t.title}
           image="suntech-enterprise-industries"
           imageAlt="Electronics recycling services for banks, hospitals, government, telecom and enterprises"
         >
-          <p>
-            The sectors where a disposal mistake makes headlines — and where our
-            documentation earns its keep.
-          </p>
+          <p>{t.intro}</p>
           <ul className="mt-5 flex flex-wrap gap-2.5">
-            {industries.map((name) => (
+            {t.names.map((name) => (
               <li
                 key={name}
                 className="rounded-full border border-line bg-paper px-4 py-2.5 text-[14.5px] font-medium text-ink transition-colors hover:border-green-2 hover:text-green"

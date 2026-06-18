@@ -7,12 +7,25 @@ import { Logo } from "@/components/layout/Logo";
 import { Icon } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { site } from "@/data/site";
-import { mainNav, type MainNavItem } from "@/lib/navigation";
+import { getMainNav, type MainNavItem } from "@/lib/navigation";
+import { getDictionary } from "@/i18n/dictionaries";
+import {
+  lp,
+  switchLocalePath,
+  isLocale,
+  locales,
+  localeLabels,
+  type Locale,
+} from "@/i18n/config";
 
 const CLOSE_DELAY = 120;
 
 export function Header() {
   const pathname = usePathname();
+  const seg = pathname.split("/").filter(Boolean)[0];
+  const locale: Locale = seg && isLocale(seg) ? seg : "en";
+  const nav = getMainNav(locale);
+  const t = getDictionary(locale);
   const headerRef = useRef<HTMLElement>(null);
   const menuButtons = useRef(new Map<string, HTMLButtonElement | null>());
   const hamburgerRef = useRef<HTMLButtonElement>(null);
@@ -98,7 +111,7 @@ export function Header() {
 
   const activeItem =
     openMenu !== null
-      ? (mainNav.find(
+      ? (nav.find(
           (i): i is Extract<MainNavItem, { kind: "menu" }> =>
             i.kind === "menu" && i.label === openMenu,
         ) ?? null)
@@ -111,12 +124,12 @@ export function Header() {
       onMouseLeave={scheduleClose}
     >
       <div className="mx-auto flex h-[70px] w-full max-w-[1180px] items-center justify-between gap-6 px-5 sm:px-8 lg:px-10">
-        <Logo onClick={closeAll} />
+        <Logo onClick={closeAll} href={lp(locale, "/")} />
 
         {/* ── Desktop primary nav ─────────────────────────────────────── */}
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-1">
-            {mainNav.map((item) =>
+            {nav.map((item) =>
               item.kind === "menu" ? (
                 <li
                   key={item.label}
@@ -167,6 +180,23 @@ export function Header() {
 
         {/* ── Desktop right side ──────────────────────────────────────── */}
         <div className="hidden items-center gap-3 lg:flex">
+          <div className="flex items-center rounded-full border border-line p-0.5" role="group" aria-label="Language">
+            {locales.map((l) => (
+              <Link
+                key={l}
+                href={switchLocalePath(pathname, l)}
+                hrefLang={l}
+                prefetch={false}
+                aria-current={l === locale ? "true" : undefined}
+                onMouseEnter={scheduleClose}
+                className={`rounded-full px-2.5 py-1 text-[12.5px] font-semibold transition-colors ${
+                  l === locale ? "bg-ink text-white" : "text-ink-soft hover:text-green"
+                }`}
+              >
+                {localeLabels[l].short}
+              </Link>
+            ))}
+          </div>
           <a
             href={`tel:${site.phone.tel}`}
             className="inline-flex items-center gap-2 text-[15px] font-medium text-ink-soft transition-colors hover:text-green"
@@ -174,8 +204,8 @@ export function Header() {
             <Icon name="phone" size={16} className="text-green" />
             {site.phone.display}
           </a>
-          <Button href="/collection" variant="dark" size="md" onMouseEnter={scheduleClose}>
-            Request a collection
+          <Button href={lp(locale, "/collection")} variant="dark" size="md" onMouseEnter={scheduleClose}>
+            {t.common.requestCollection}
           </Button>
         </div>
 
@@ -276,7 +306,7 @@ export function Header() {
           }`}
         >
           <div className="flex h-[70px] shrink-0 items-center justify-between border-b border-line px-5">
-            <Logo onClick={closeAll} />
+            <Logo onClick={closeAll} href={lp(locale, "/")} />
             <button
               ref={drawerCloseRef}
               type="button"
@@ -293,7 +323,7 @@ export function Header() {
             className="flex-1 overflow-y-auto overscroll-contain px-4 py-5"
           >
             <ul className="flex flex-col gap-1">
-              {mainNav.map((item) =>
+              {nav.map((item) =>
                 item.kind === "menu" ? (
                   <li key={item.label} className="border-b border-line/70 pb-1">
                     <button
@@ -364,6 +394,23 @@ export function Header() {
           </nav>
 
           <div className="shrink-0 space-y-3 border-t border-line px-5 py-5">
+            <div className="flex items-center gap-2" role="group" aria-label="Language">
+              {locales.map((l) => (
+                <Link
+                  key={l}
+                  href={switchLocalePath(pathname, l)}
+                  hrefLang={l}
+                  prefetch={false}
+                  onClick={closeAll}
+                  aria-current={l === locale ? "true" : undefined}
+                  className={`rounded-full border px-3 py-1.5 text-[13px] font-semibold transition-colors ${
+                    l === locale ? "border-ink bg-ink text-white" : "border-line text-ink-soft"
+                  }`}
+                >
+                  {localeLabels[l].long}
+                </Link>
+              ))}
+            </div>
             <a
               href={`tel:${site.phone.tel}`}
               className="inline-flex items-center gap-2 text-[15px] font-semibold text-ink"
@@ -372,14 +419,14 @@ export function Header() {
               {site.phone.display}
             </a>
             <Button
-              href="/collection"
+              href={lp(locale, "/collection")}
               variant="primary"
               size="md"
               icon="arrow-right"
               className="w-full"
               onClick={closeAll}
             >
-              Request a collection
+              {t.common.requestCollection}
             </Button>
           </div>
         </aside>

@@ -68,3 +68,70 @@ export const r2v3 = {
     "Full chain-of-custody documentation",
   ],
 } as const;
+
+/* ── French overlay + locale getter ───────────────────────────────────────── */
+import type { Locale } from "@/i18n/config";
+import { deepMerge } from "@/i18n/merge";
+
+type R2v3 = typeof r2v3;
+type R2v3Overlay = {
+  name?: string;
+  shortName?: string;
+  authority?: string;
+  tagline?: string;
+  lead?: string;
+  whatItMeans?: string[];
+  benefits?: { title?: string; body?: string }[];
+  chainOfCustody?: string[];
+  standards?: string[];
+};
+
+const r2v3Fr: R2v3Overlay = {
+  name: "Certification SERI R2v3",
+  shortName: "Certifié R2v3",
+  authority: "SERI (Sustainable Electronics Recycling International)",
+  tagline: "La principale norme mondiale pour le recyclage responsable de l’électronique.",
+  lead: "SunTech Recycle détient une certification SERI R2v3 active — la norme la plus largement reconnue pour le recyclage et la disposition des actifs TI responsables, sécuritaires et durables. Pour votre organisation, cela signifie que le partenaire qui traite votre matériel retiré est audité de façon indépendante selon des exigences rigoureuses en matière de sécurité des données, de responsabilité environnementale et de traçabilité en aval.",
+  whatItMeans: [
+    "R2 (Responsible Recycling) est la principale certification pour l’industrie du recyclage d’électronique et de l’ITAD, administrée par SERI. R2v3 en est la version actuelle, la plus rigoureuse.",
+    "La certification n’est accordée qu’après des audits indépendants par une tierce partie accréditée — et est maintenue par des audits de surveillance continus, pas une vérification unique.",
+    "Elle fixe des exigences pour tout le cycle de vie : réemploi et réparation d’abord, assainissement sécurisé des données, recyclage écologique, santé et sécurité des travailleurs, et diligence raisonnable vérifiée sur les fournisseurs en aval.",
+  ],
+  benefits: [
+    {
+      title: "Une sécurité des données prouvable",
+      body: "R2v3 exige un assainissement des données documenté et aligné sur des normes reconnues (comme NIST 800-88) et un registre vérifiable pour chaque appareil — ce qui réduit directement votre exposition au risque et à la responsabilité liés aux fuites de données.",
+    },
+    {
+      title: "Conformité et préparation à l’audit",
+      body: "Travailler avec un recycleur certifié R2v3 donne à vos auditeurs, organismes de réglementation et clients une preuve indépendante que les actifs retirés ont été traités selon une norme reconnue — à l’appui de la Loi 25, de la LPRPDE et de vos propres cadres.",
+    },
+    {
+      title: "Responsabilité environnementale",
+      body: "La norme impose une hiérarchie axée sur le réemploi, un recyclage responsable des matériaux et des contrôles stricts sur les matières visées — gardant l’électronique hors de l’enfouissement et réinjectant les matériaux récupérés dans la chaîne d’approvisionnement.",
+    },
+    {
+      title: "Traçabilité en aval vérifiée",
+      body: "R2v3 exige une diligence raisonnable sur chaque fournisseur en aval, pour que les matériaux soient suivis et gérés de façon responsable tout au long de la chaîne — pas transférés puis oubliés.",
+    },
+  ],
+  chainOfCustody: [
+    "Chaque actif est suivi de la collecte au traitement sous une chaîne de possession documentée.",
+    "Les appareils contenant des données sont assainis ou détruits selon la norme, chacun lié à un registre sérialisé.",
+    "Les flux de matériaux et les fournisseurs en aval sont documentés et vérifiés.",
+    "Vous recevez des certificats et un rapport de détournement / récupération à la clôture.",
+  ],
+  standards: [
+    "Hiérarchie de réemploi, réparation et remise à neuf",
+    "Assainissement et destruction sécurisés des données",
+    "Système de gestion environnement, santé et sécurité",
+    "Contrôles de manutention des matières visées",
+    "Diligence raisonnable sur les fournisseurs en aval",
+    "Documentation complète de la chaîne de possession",
+  ],
+};
+
+export function getR2v3(locale: Locale): R2v3 {
+  if (locale === "en") return r2v3;
+  return deepMerge(r2v3, r2v3Fr);
+}

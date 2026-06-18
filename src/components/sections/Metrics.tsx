@@ -1,15 +1,15 @@
 import { Container } from "@/components/ui/Container";
+import { getDictionary } from "@/i18n/dictionaries";
+import { type Locale } from "@/i18n/config";
 
-type Metric = { value: string; unit?: string; label: string };
-
-const metrics: Metric[] = [
-  { value: "12", unit: "+", label: "Years in operation" },
-  { value: "8,400", unit: " t", label: "Tonnes recycled" },
-  { value: "240", unit: "+", label: "Corporate clients served" },
-  { value: "5,000", unit: "+", label: "Collections completed" },
-];
-
-export function Metrics() {
+export function Metrics({ locale = "en" }: { locale?: Locale }) {
+  const t = getDictionary(locale).metrics;
+  const metrics = [
+    { value: "12", unit: "+", label: t.yearsLabel },
+    { value: "8,400", unit: " t", label: t.tonnesLabel },
+    { value: "240", unit: "+", label: t.clientsLabel },
+    { value: "5,000", unit: "+", label: t.collectionsLabel },
+  ];
   return (
     <section className="border-b border-line bg-paper">
       <Container>
@@ -22,9 +22,7 @@ export function Metrics() {
                   {m.value}
                   {m.unit && <span className="text-orange">{m.unit}</span>}
                 </span>
-                <span className="mt-1 block text-[13.5px] text-ink-soft">
-                  {m.label}
-                </span>
+                <span className="mt-1 block text-[13.5px] text-ink-soft">{m.label}</span>
               </dd>
             </div>
           ))}

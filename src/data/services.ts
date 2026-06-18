@@ -248,8 +248,216 @@ export const services: Service[] = [
   },
 ];
 
+/* ── French overlay (fields omitted fall back to English) ─────────────────── */
+import type { Locale } from "@/i18n/config";
+import { deepMerge, type DeepPartial } from "@/i18n/merge";
+
+const servicesFr: Record<string, DeepPartial<Service>> = {
+  "electronics-recycling": {
+    shortName: "Recyclage d’électronique",
+    name: "Recyclage d’électronique",
+    kicker: "Recyclage d’électronique",
+    summary:
+      "Ordinateurs, serveurs, équipement réseau et appareils mobiles triés, démantelés et traités dans notre usine — matériaux récupérés et rien envoyé à l’enfouissement.",
+    title: "Un traitement responsable, entièrement documenté.",
+    lead: "Ordinateurs, portables, serveurs, écrans, imprimantes, équipement réseau, appareils mobiles, câbles et blocs d’alimentation sont triés, démantelés et traités dans notre usine. Les matériaux sont récupérés et réinjectés dans la chaîne d’approvisionnement — et rien n’est envoyé à l’enfouissement. Tout circule sous une seule chaîne de possession, pour que vous puissiez prouver exactement ce qui est arrivé à chaque appareil.",
+    capabilities: [
+      "Postes de travail, portables et ordinateurs de bureau",
+      "Serveurs, stockage et équipement réseau",
+      "Écrans, moniteurs et téléviseurs",
+      "Imprimantes, copieurs et périphériques",
+      "Téléphones, tablettes et appareils mobiles",
+      "Câbles, blocs d’alimentation et onduleurs",
+      "Équipement télécom et de salle de communication",
+      "Équipement industriel, mécanique, hydraulique et pneumatique",
+    ],
+    highlights: [
+      {
+        title: "Zéro enfouissement",
+        body: "L’équipement en fin de vie est démantelé et séparé en flux de matériaux récupérables — jamais envoyé à l’enfouissement.",
+      },
+      {
+        title: "Récupération des matériaux",
+        body: "Métaux, plastiques et circuits imprimés sont récupérés et réinjectés dans la chaîne d’approvisionnement plutôt que perdus.",
+      },
+      {
+        title: "Une seule chaîne de possession",
+        body: "Collecte, transport et traitement sont consignés de bout en bout, avec un rapport de détournement et de récupération à la fin.",
+      },
+    ],
+    seo: {
+      title: "Recyclage d’électronique dans le Grand Montréal | SunTech Recycle",
+      description:
+        "Recyclage d’électronique et de rebuts électroniques certifié pour les entreprises : ordinateurs, serveurs, réseau, écrans et appareils mobiles traités avec chaîne de possession complète. Collecte gratuite dans le Grand Montréal.",
+    },
+  },
+  "secure-data-destruction": {
+    shortName: "Destruction de données",
+    name: "Destruction sécurisée des données",
+    kicker: "Destruction sécurisée des données",
+    summary:
+      "Disques durs et SSD effacés selon NIST 800-88 ou déchiquetés physiquement sous sceau inviolable — avec un certificat de destruction sérialisé pour chaque actif.",
+    title: "Aucun disque ne part sans être comptabilisé.",
+    lead: "Les disques durs et SSD sont effacés selon la norme NIST 800-88 ou déchiquetés physiquement, sous clé et sceau inviolable. Chaque actif est suivi par numéro de série et associé à un certificat de destruction, pour que vos auditeurs, organismes de réglementation et clients voient une boucle fermée — pas une faille. La destruction sur place et témoin est offerte pour les environnements les plus sensibles.",
+    capabilities: [
+      "Assainissement des données NIST 800-88",
+      "Déchiquetage sur place ou en usine",
+      "Option de destruction témoin",
+      "Démagnétisation des supports magnétiques",
+      "Disques durs, SSD, bandes et supports mobiles",
+      "Transport sous sceau inviolable",
+      "Certificat sérialisé par actif",
+      "Traçabilité complète prête pour l’audit",
+    ],
+    highlights: [
+      {
+        title: "Un certificat par actif",
+        body: "Chaque disque est consigné par numéro de série et lié à un certificat de destruction sérialisé — pas un simple reçu global.",
+      },
+      {
+        title: "Conforme à la Loi 25 et à la LPRPDE",
+        body: "La documentation est conçue pour la Loi 25 du Québec, la LPRPDE et les cadres de vos clients, pour que la disposition résiste à l’audit.",
+      },
+      {
+        title: "Sur place ou témoin",
+        body: "Pour les environnements réglementés, les disques peuvent être détruits sur votre site ou sous votre supervision avant que quoi que ce soit ne quitte les lieux.",
+      },
+    ],
+    seo: {
+      title: "Destruction sécurisée des données et déchiquetage de disques | SunTech Recycle",
+      description:
+        "Effacement de données NIST 800-88 et déchiquetage physique de disques avec un certificat de destruction sérialisé pour chaque actif. Destruction sur place et témoin dans le Grand Montréal et au Québec.",
+    },
+  },
+  itad: {
+    shortName: "ITAD",
+    name: "Disposition des actifs TI (ITAD)",
+    kicker: "Disposition des actifs TI",
+    summary:
+      "Chaque actif est scanné, audité et trié : l’équipement fonctionnel est effacé et remis en marché, renvoyant de la valeur à votre bilan; le reste est recyclé de façon responsable.",
+    title: "Récupérez de la valeur, ne faites pas que disposer.",
+    lead: "Chaque actif est scanné, audité et trié. L’équipement fonctionnel est effacé de façon sécurisée puis remis en marché ou remis à neuf, renvoyant de la valeur à votre bilan; le reste est recyclé de façon responsable. Vous obtenez un seul partenaire responsable gérant tout le cycle de vie du matériel — avec un rapport de règlement et de récupération de valeur que vous pouvez remettre aux finances.",
+    capabilities: [
+      "Scan et audit des actifs",
+      "Assainissement certifié des données",
+      "Remise en marché et revente",
+      "Remise à neuf et réemploi",
+      "Gestion des retours de location",
+      "Logistique et transport sécurisés",
+      "Rapport de récupération de valeur",
+      "Règlement et rapprochement",
+    ],
+    highlights: [
+      {
+        title: "De la valeur de retour au bilan",
+        body: "Les actifs fonctionnels sont remis en marché, pas déchiquetés — transformant un coût de disposition en valeur récupérée.",
+      },
+      {
+        title: "Tri audité",
+        body: "Chaque actif est scanné et rapproché, pour que ce qui a été retiré, effacé, revendu ou recyclé soit entièrement comptabilisé.",
+      },
+      {
+        title: "Rapports prêts pour les finances",
+        body: "Les rapports de règlement et de récupération donnent aux finances des chiffres clairs sur ce que votre matériel retiré a rapporté.",
+      },
+    ],
+    seo: {
+      title: "Disposition des actifs TI (ITAD) et remise en marché | SunTech Recycle",
+      description:
+        "ITAD certifié pour les entreprises : tri audité des actifs, effacement sécurisé des données, remise en marché et récupération de valeur avec rapports prêts pour les finances. Au service du Grand Montréal et du Québec.",
+    },
+  },
+  "data-center-decommissioning": {
+    shortName: "Démantèlement de centres de données",
+    name: "Démantèlement de centres de données",
+    kicker: "Démantèlement de centres de données",
+    summary:
+      "Démantèlement complet de baies et de serveurs avec destruction sur place ou témoin, transport suivi par GPS et traçabilité de bout en bout — conçu pour les environnements actifs et réglementés.",
+    title: "Des salles de serveurs vidées sans le risque.",
+    lead: "Démantèlement complet de baies et de serveurs avec destruction sur place ou témoin, transport suivi par GPS et traçabilité de bout en bout. Les projets sont gérés étage par étage et rapprochés actif par actif — conçus pour les environnements actifs et réglementés où les temps d’arrêt et l’exposition des données ne sont pas des options.",
+    capabilities: [
+      "Démontage de baies et d’armoires",
+      "Collecte de serveurs et de stockage",
+      "Collecte de câbles, PDU et onduleurs",
+      "Destruction des données sur place",
+      "Transport suivi par GPS",
+      "Gestion de projet étage par étage",
+      "Rapprochement des actifs",
+      "Possession consignée à chaque transfert",
+    ],
+    highlights: [
+      {
+        title: "Conçu pour les environnements actifs",
+        body: "Le démantèlement est séquencé autour de vos opérations, avec des options de destruction qui gardent les données à l’intérieur des lieux.",
+      },
+      {
+        title: "Suivi de bout en bout",
+        body: "Le transport suivi par GPS et la possession consignée à chaque transfert signifient que rien ne bouge sans trace.",
+      },
+      {
+        title: "Rapproché actif par actif",
+        body: "Chaque baie et appareil est comptabilisé par rapport à votre inventaire avant la clôture du projet.",
+      },
+    ],
+    seo: {
+      title: "Démantèlement de centres de données et recyclage de serveurs | SunTech Recycle",
+      description:
+        "Démantèlement sécurisé de centres de données : démontage de baies, destruction sur place, transport suivi par GPS et rapprochement des actifs pour les environnements actifs et réglementés au Québec.",
+    },
+  },
+  "metal-recycling": {
+    shortName: "Recyclage des métaux",
+    name: "Recyclage des métaux",
+    kicker: "Recyclage des métaux",
+    summary:
+      "Aluminium, cuivre, zinc, acier inoxydable et métaux précieux récupérés de l’équipement en fin de vie et des rebuts industriels, puis réinjectés dans la chaîne d’approvisionnement.",
+    title: "Cuivre, aluminium, acier et métaux précieux, récupérés.",
+    lead: "L’aluminium, le cuivre, le zinc, l’acier inoxydable et les métaux précieux sont récupérés de l’équipement en fin de vie et des rebuts industriels, puis réinjectés dans la chaîne d’approvisionnement. Nous traitons les sources électroniques et industrielles et faisons rapport sur le poids et la récupération, pour que la valeur des matériaux récupérés soit visible plutôt que perdue.",
+    capabilities: [
+      "Cuivre et laiton",
+      "Aluminium",
+      "Acier inoxydable et au carbone",
+      "Zinc et plomb",
+      "Récupération de métaux précieux",
+      "Câbles et fils",
+      "Transformateurs et moteurs",
+      "Rebuts industriels",
+    ],
+    highlights: [
+      {
+        title: "Récupération des matériaux",
+        body: "Les métaux sont séparés et récupérés des rebuts électroniques et industriels plutôt que jetés.",
+      },
+      {
+        title: "De retour dans la chaîne d’approvisionnement",
+        body: "Les matériaux récupérés sont retournés à la chaîne d’approvisionnement, soutenant une véritable économie circulaire.",
+      },
+      {
+        title: "Rapport de poids et de récupération",
+        body: "Vous recevez un rapport clair de ce qui a été collecté et récupéré, par poids et par flux de matériaux.",
+      },
+    ],
+    seo: {
+      title: "Recyclage des métaux et récupération de matériaux | SunTech Recycle",
+      description:
+        "Récupération de cuivre, d’aluminium, d’acier, de zinc et de métaux précieux à partir d’équipement en fin de vie et de rebuts industriels, avec rapport de poids et de récupération. Au service du Grand Montréal et du Québec.",
+    },
+  },
+};
+
 export const serviceSlugs = services.map((s) => s.slug);
 
-export function getService(slug: string): Service | undefined {
-  return services.find((s) => s.slug === slug);
+function localizeService(s: Service, locale: Locale): Service {
+  if (locale === "en") return s;
+  const overlay = servicesFr[s.slug];
+  return overlay ? deepMerge(s, overlay) : s;
+}
+
+export function getServices(locale: Locale): Service[] {
+  return services.map((s) => localizeService(s, locale));
+}
+
+export function getService(locale: Locale, slug: string): Service | undefined {
+  const s = services.find((x) => x.slug === slug);
+  return s ? localizeService(s, locale) : undefined;
 }

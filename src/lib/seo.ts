@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { site, fullAddress } from "@/data/site";
 import type { Service } from "@/data/services";
 import type { Location } from "@/data/locations";
+import { lp, locales, type Locale } from "@/i18n/config";
 
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL ?? site.url
@@ -16,24 +17,36 @@ const DEFAULT_OG = "/images/suntech-homepage-hero.jpg";
 type BuildMetaArgs = {
   title: string;
   description: string;
+  /** Unprefixed canonical path, e.g. "/services/itad" or "/". */
   path: string;
+  /** Locale of the page being rendered. */
+  locale?: Locale;
   image?: string;
   /** Pass false for utility pages that should not be indexed. */
   index?: boolean;
 };
 
+/** hreflang alternates for an unprefixed path: one entry per locale + x-default. */
+function languageAlternates(path: string): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const l of locales) out[l] = absoluteUrl(lp(l, path));
+  out["x-default"] = absoluteUrl(lp("en", path));
+  return out;
+}
+
 export function buildMetadata({
   title,
   description,
   path,
+  locale = "en",
   image = DEFAULT_OG,
   index = true,
 }: BuildMetaArgs): Metadata {
-  const url = absoluteUrl(path);
+  const url = absoluteUrl(lp(locale, path));
   return {
     title,
     description,
-    alternates: { canonical: url },
+    alternates: { canonical: url, languages: languageAlternates(path) },
     robots: index
       ? { index: true, follow: true }
       : { index: false, follow: false },
@@ -43,7 +56,7 @@ export function buildMetadata({
       title,
       description,
       siteName: site.name,
-      locale: "en_CA",
+      locale: locale === "fr" ? "fr_CA" : "en_CA",
       images: [{ url: absoluteUrl(image), width: 1200, height: 675, alt: title }],
     },
     twitter: {

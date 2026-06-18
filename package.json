@@ -4,11 +4,13 @@
   "private": true,
   "description": "SunTech Recycle — certified electronics recycling, ITAD & secure data destruction across Greater Montréal and Québec.",
   "type": "module",
-"scripts": {
-  "dev": "next dev",
-  "build": "next build",
-  "start": "next start"
-},
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint --max-warnings 0",
+    "typecheck": "tsc --noEmit"
+  },
   "dependencies": {
     "@fontsource/ibm-plex-mono": "5.2.7",
     "@fontsource/ibm-plex-sans": "5.2.8",

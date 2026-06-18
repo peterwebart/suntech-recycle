@@ -469,14 +469,40 @@ const hubs: Location[] = [
 type Tuple = [slug: string, name: string, region: string, lat: number, lng: number];
 type NTuple = [slug: string, name: string, lat: number, lng: number];
 
-function citySeo(name: string, region: string): { title: string; description: string } {
+import type { Locale } from "@/i18n/config";
+
+function citySeo(
+  name: string,
+  region: string,
+  locale: Locale = "en",
+): { title: string; description: string } {
+  if (locale === "fr") {
+    return {
+      title: `Recyclage d’électronique et destruction de données à ${name} | SunTech Recycle`,
+      description: `Recyclage d’électronique certifié R2v3, destruction sécurisée des données et disposition des actifs TI pour les entreprises de ${name}, ${region}. Collecte commerciale et service par envoi sécurisé et traçable avec chaîne de possession complète.`,
+    };
+  }
   return {
     title: `Electronics Recycling & Data Destruction in ${name} | SunTech Recycle`,
     description: `R2v3 certified electronics recycling, secure data destruction and IT asset disposition for businesses in ${name}, ${region}. Commercial collection and secure, trackable mail-in service with full chain of custody.`,
   };
 }
 
-function neighbourhood([slug, name, lat, lng]: NTuple): Location {
+function neighbourhood([slug, name, lat, lng]: NTuple, locale: Locale = "en"): Location {
+  const intro =
+    locale === "fr"
+      ? `À ${name}, SunTech Recycle offre un recyclage d’électronique certifié R2v3, une destruction sécurisée des données et une collecte d’entreprise gratuite. Dans le cadre de notre couverture de l’ensemble de l’île de Montréal, nous planifions une collecte rapide depuis notre usine voisine de Longueuil — avec une chaîne de possession documentée et un certificat sérialisé sur chaque actif.`
+      : `In ${name}, SunTech Recycle provides R2v3 certified electronics recycling, secure data destruction and free business collection. As part of our island-wide coverage of Montréal, we schedule fast collection from our nearby Longueuil facility — with a documented chain of custody and a serialized certificate on every asset.`;
+  const seo =
+    locale === "fr"
+      ? {
+          title: `Recyclage d’électronique et destruction de données à ${name}, Montréal | SunTech Recycle`,
+          description: `Recyclage d’électronique certifié R2v3, destruction sécurisée des données et collecte d’entreprise gratuite à ${name}, Montréal. Ordinateurs, serveurs et actifs TI traités avec chaîne de possession complète.`,
+        }
+      : {
+          title: `Electronics Recycling & Data Destruction in ${name}, Montréal | SunTech Recycle`,
+          description: `R2v3 certified electronics recycling, secure data destruction and free business collection in ${name}, Montréal. Computers, servers and IT assets handled with full chain of custody.`,
+        };
   return {
     slug,
     name,
@@ -488,15 +514,16 @@ function neighbourhood([slug, name, lat, lng]: NTuple): Location {
     lng,
     zoom: 13,
     localService: true,
-    intro: `In ${name}, SunTech Recycle provides R2v3 certified electronics recycling, secure data destruction and free business collection. As part of our island-wide coverage of Montréal, we schedule fast collection from our nearby Longueuil facility — with a documented chain of custody and a serialized certificate on every asset.`,
-    seo: {
-      title: `Electronics Recycling & Data Destruction in ${name}, Montréal | SunTech Recycle`,
-      description: `R2v3 certified electronics recycling, secure data destruction and free business collection in ${name}, Montréal. Computers, servers and IT assets handled with full chain of custody.`,
-    },
+    intro,
+    seo,
   };
 }
 
-function canadaCity([slug, name, region, lat, lng]: Tuple): Location {
+function canadaCity([slug, name, region, lat, lng]: Tuple, locale: Locale = "en"): Location {
+  const intro =
+    locale === "fr"
+      ? `SunTech Recycle sert les entreprises de ${name}, ${region} avec un recyclage d’électronique certifié R2v3, une disposition des actifs TI et une destruction sécurisée des données. Nous offrons une collecte par projet pour les volumes plus importants et un service sécurisé et entièrement traçable pour les disques et actifs TI — chacun avec un certificat sérialisé et une chaîne de possession documentée.`
+      : `SunTech Recycle serves businesses in ${name}, ${region} with R2v3 certified electronics recycling, IT asset disposition and secure data destruction. We handle project-based collection for larger volumes and secure, fully trackable service for drives and IT assets — each with a serialized certificate and a documented chain of custody.`;
   return {
     slug,
     name,
@@ -507,12 +534,16 @@ function canadaCity([slug, name, region, lat, lng]: Tuple): Location {
     lat,
     lng,
     zoom: 11,
-    intro: `SunTech Recycle serves businesses in ${name}, ${region} with R2v3 certified electronics recycling, IT asset disposition and secure data destruction. We handle project-based collection for larger volumes and secure, fully trackable service for drives and IT assets — each with a serialized certificate and a documented chain of custody.`,
-    seo: citySeo(name, region),
+    intro,
+    seo: citySeo(name, region, locale),
   };
 }
 
-function usCity([slug, name, region, lat, lng]: Tuple): Location {
+function usCity([slug, name, region, lat, lng]: Tuple, locale: Locale = "en"): Location {
+  const intro =
+    locale === "fr"
+      ? `Pour les entreprises de ${name}, ${region}, SunTech Recycle offre une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique. Le service par envoi sécurisé et la collecte de projet planifiée gardent votre matériel retiré traçable partout aux États-Unis — avec des certificats sérialisés et une chaîne de possession documentée.`
+      : `For businesses in ${name}, ${region}, SunTech Recycle delivers R2v3 certified IT asset disposition, secure data destruction and electronics recycling. Secure mail-in service and scheduled project collection keep your retired hardware accountable across the United States — with serialized certificates and a documented chain of custody.`;
   return {
     slug,
     name,
@@ -523,12 +554,16 @@ function usCity([slug, name, region, lat, lng]: Tuple): Location {
     lat,
     lng,
     zoom: 11,
-    intro: `For businesses in ${name}, ${region}, SunTech Recycle delivers R2v3 certified IT asset disposition, secure data destruction and electronics recycling. Secure mail-in service and scheduled project collection keep your retired hardware accountable across the United States — with serialized certificates and a documented chain of custody.`,
-    seo: citySeo(name, region),
+    intro,
+    seo: citySeo(name, region, locale),
   };
 }
 
-function mexicoCity([slug, name, region, lat, lng]: Tuple): Location {
+function mexicoCity([slug, name, region, lat, lng]: Tuple, locale: Locale = "en"): Location {
+  const intro =
+    locale === "fr"
+      ? `SunTech Recycle appuie les entreprises de ${name}, ${region} avec une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique. Le traitement sécurisé et la collecte par projet offrent aux organisations partout au Mexique une voie certifiée et responsable pour retirer leurs actifs TI et électroniques.`
+      : `SunTech Recycle supports businesses in ${name}, ${region} with R2v3 certified IT asset disposition, secure data destruction and electronics recycling. Secure processing and project-based collection give organizations across Mexico an accountable, certified path for retiring IT and electronic assets.`;
   return {
     slug,
     name,
@@ -539,8 +574,8 @@ function mexicoCity([slug, name, region, lat, lng]: Tuple): Location {
     lat,
     lng,
     zoom: 11,
-    intro: `SunTech Recycle supports businesses in ${name}, ${region} with R2v3 certified IT asset disposition, secure data destruction and electronics recycling. Secure processing and project-based collection give organizations across Mexico an accountable, certified path for retiring IT and electronic assets.`,
-    seo: citySeo(name, region),
+    intro,
+    seo: citySeo(name, region, locale),
   };
 }
 
@@ -696,27 +731,153 @@ const countries: Location[] = [
   },
 ];
 
-/* ── Assembled dataset ────────────────────────────────────────────────────── */
+/* ── French overlay for bespoke (hub + country) intro/seo ─────────────────── */
+type Bespoke = { intro: string; seo: { title: string; description: string } };
+const bespokeFr: Record<string, Bespoke> = {
+  canada: {
+    intro:
+      "Depuis notre usine du Grand Montréal, SunTech Recycle offre un recyclage d’électronique certifié R2v3, une destruction sécurisée des données et une disposition des actifs TI aux entreprises partout au Canada — collecte locale rapide dans la région de Montréal et service sécurisé et entièrement traçable à l’échelle nationale.",
+    seo: {
+      title: "Recyclage d’électronique, ITAD et destruction de données au Canada | SunTech Recycle",
+      description:
+        "Recyclage d’électronique commercial certifié R2v3, disposition des actifs TI et destruction sécurisée des données partout au Canada. Collecte locale dans le Grand Montréal et service sécurisé à l’échelle nationale.",
+    },
+  },
+  "united-states": {
+    intro:
+      "SunTech Recycle offre une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique aux entreprises partout aux États-Unis, avec service par envoi sécurisé et collecte par projet — chaque actif suivi sous une chaîne de possession documentée.",
+    seo: {
+      title: "Recyclage d’électronique, ITAD et destruction de données aux États-Unis | SunTech Recycle",
+      description:
+        "Disposition des actifs TI certifiée R2v3, destruction sécurisée des données et recyclage d’électronique commercial pour les entreprises partout aux États-Unis. Service par envoi sécurisé et collecte par projet.",
+    },
+  },
+  mexico: {
+    intro:
+      "SunTech Recycle offre une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique pour les entreprises partout au Mexique, avec traitement sécurisé et collecte par projet pour les organisations qui retirent leurs actifs TI et électroniques.",
+    seo: {
+      title: "Recyclage d’électronique, ITAD et destruction de données au Mexique | SunTech Recycle",
+      description:
+        "Disposition des actifs TI certifiée R2v3, destruction sécurisée des données et recyclage d’électronique commercial pour les entreprises partout au Mexique. Traitement sécurisé et collecte par projet.",
+    },
+  },
+  montreal: {
+    intro:
+      "Des tours du centre-ville aux parcs industriels de Saint-Laurent et d’Anjou, nous collectons et traitons l’équipement TI retiré partout sur l’île de Montréal — avec une destruction sécurisée des données et une chaîne de possession documentée à chaque collecte.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Montréal | SunTech Recycle",
+      description:
+        "Recyclage d’électronique d’entreprise, destruction sécurisée des données et ITAD partout sur l’île de Montréal — centre-ville, Saint-Laurent, Anjou et plus. Collecte gratuite avec chaîne de possession complète.",
+    },
+  },
+  laval: {
+    intro:
+      "Partout à Laval — du quartier d’affaires de Chomedey aux secteurs industriels de Sainte-Dorothée et de Vimont — nous offrons un recyclage d’électronique certifié, une destruction sécurisée des données et une collecte corporative gratuite, entièrement documentée.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Laval | SunTech Recycle",
+      description:
+        "Recyclage d’électronique certifié, destruction sécurisée des données et ITAD à Laval — Chomedey, Sainte-Dorothée, Vimont. Collecte d’entreprise gratuite, entièrement documentée.",
+    },
+  },
+  longueuil: {
+    intro:
+      "Depuis notre usine de Longueuil, nous offrons à la Rive-Sud un recyclage d’électronique certifié, une destruction sécurisée des données et une collecte d’entreprise gratuite — avec une chaîne de possession documentée et un certificat sérialisé sur chaque actif.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Longueuil | SunTech Recycle",
+      description:
+        "Recyclage d’électronique certifié, destruction sécurisée des données et ITAD à Longueuil et sur la Rive-Sud. Collecte gratuite avec certificats sérialisés et chaîne de possession.",
+    },
+  },
+  brossard: {
+    intro:
+      "À Brossard et le long du corridor du Quartier DIX30, nous offrons aux bureaux, commerces et entreprises un recyclage d’électronique certifié, une destruction sécurisée des données et une collecte gratuite, entièrement documentée.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Brossard | SunTech Recycle",
+      description:
+        "Recyclage d’électronique, destruction de données et ITAD à Brossard et au DIX30. Collecte d’entreprise gratuite avec chaîne de possession complète.",
+    },
+  },
+  boucherville: {
+    intro:
+      "Dans le parc industriel de Boucherville et les environs de la Rive-Sud, nous collectons et traitons l’équipement TI et électronique avec une destruction sécurisée des données et une chaîne de possession complète.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Boucherville | SunTech Recycle",
+      description:
+        "Recyclage d’électronique certifié et destruction sécurisée des données à Boucherville et sur la Rive-Sud. Collecte gratuite avec documentation complète.",
+    },
+  },
+  "saint-hubert": {
+    intro:
+      "À Saint-Hubert — incluant les secteurs aéroportuaire et industriels — nous offrons un recyclage d’électronique rapide et gratuit et une destruction sécurisée des données, avec un traitement certifié et une chaîne de possession complète.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Saint-Hubert | SunTech Recycle",
+      description:
+        "Recyclage d’électronique rapide et gratuit et destruction sécurisée des données à Saint-Hubert — secteurs aéroportuaire et industriels inclus. Traitement certifié avec chaîne de possession complète.",
+    },
+  },
+  terrebonne: {
+    intro:
+      "Sur la Rive-Nord, nous desservons Terrebonne et la communauté d’affaires de Lanaudière — de la zone industrielle de Lachenaie au Vieux-Terrebonne — avec un recyclage d’électronique certifié, une destruction de données et une collecte corporative gratuite.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Terrebonne | SunTech Recycle",
+      description:
+        "Recyclage d’électronique certifié, destruction sécurisée des données et ITAD sur la Rive-Nord — Terrebonne, Lachenaie et La Plaine. Collecte d’entreprise gratuite, entièrement documentée.",
+    },
+  },
+  "pointe-claire": {
+    intro:
+      "Au service de Pointe-Claire et du corridor d’affaires de l’Ouest-de-l’Île, nous offrons un recyclage d’électronique sécurisé, une destruction de données certifiée et de l’ITAD pour bureaux, laboratoires et commerces — avec collecte gratuite et chaîne de possession documentée.",
+    seo: {
+      title: "Recyclage d’électronique et destruction de données à Pointe-Claire | SunTech Recycle",
+      description:
+        "Recyclage d’électronique sécurisé, destruction de données et ITAD à Pointe-Claire et dans l’Ouest-de-l’Île. Collecte gratuite avec certificats sérialisés et chaîne de possession.",
+    },
+  },
+};
 
-export const locations: Location[] = [
-  ...countries,
-  ...hubs,
-  ...montrealNeighbourhoods.map(neighbourhood),
-  ...canadaCities.map(canadaCity),
-  ...usCities.map(usCity),
-  ...mexicoCities.map(mexicoCity),
-];
-
-export const locationSlugs = locations.map((l) => l.slug);
-
-export function getLocation(slug: string): Location | undefined {
-  return locations.find((l) => l.slug === slug);
+function localizeBespoke(loc: Location, locale: Locale): Location {
+  if (locale === "en") return loc;
+  const o = bespokeFr[loc.slug];
+  return o ? { ...loc, intro: o.intro, seo: o.seo } : loc;
 }
 
-export const countryList = countries;
+/* ── Assembled dataset (per-locale, memoized) ─────────────────────────────── */
 
-export function citiesInCountry(countrySlug: string): Location[] {
-  return locations.filter(
+function buildLocations(locale: Locale): Location[] {
+  return [
+    ...countries.map((c) => localizeBespoke(c, locale)),
+    ...hubs.map((h) => localizeBespoke(h, locale)),
+    ...montrealNeighbourhoods.map((t) => neighbourhood(t, locale)),
+    ...canadaCities.map((t) => canadaCity(t, locale)),
+    ...usCities.map((t) => usCity(t, locale)),
+    ...mexicoCities.map((t) => mexicoCity(t, locale)),
+  ];
+}
+
+const _cache: Partial<Record<Locale, Location[]>> = {};
+function localized(locale: Locale): Location[] {
+  return (_cache[locale] ??= buildLocations(locale));
+}
+
+/** English dataset (kept for slug lists and any locale-agnostic use). */
+export const locations: Location[] = localized("en");
+export const locationSlugs = locations.map((l) => l.slug);
+
+export function getLocations(locale: Locale): Location[] {
+  return localized(locale);
+}
+
+export function getLocation(locale: Locale, slug: string): Location | undefined {
+  return localized(locale).find((l) => l.slug === slug);
+}
+
+export function getCountryList(locale: Locale): Location[] {
+  return localized(locale).filter((l) => l.kind === "country");
+}
+export const countryList = getCountryList("en");
+
+export function citiesInCountry(locale: Locale, countrySlug: string): Location[] {
+  return localized(locale).filter(
     (l) => l.countrySlug === countrySlug && l.kind !== "country",
   );
 }
@@ -728,7 +889,11 @@ export function countryName(countrySlug: string): CountryName | undefined {
 }
 
 /** Greater-Montréal hubs, for nav / footer highlights. */
-export const hubCities = hubs;
+export function getHubCities(locale: Locale): Location[] {
+  const slugs = new Set(hubs.map((h) => h.slug));
+  return localized(locale).filter((l) => slugs.has(l.slug));
+}
+export const hubCities = getHubCities("en");
 
 /** The facility marker, reused on maps that should reference home base. */
 export const headquartersMarker = {

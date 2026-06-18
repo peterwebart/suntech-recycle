@@ -4,13 +4,15 @@ import Link from "next/link";
 export function Logo({
   className = "",
   onClick,
+  href = "/",
 }: {
   className?: string;
   onClick?: () => void;
+  href?: string;
 }) {
   return (
     <Link
-      href="/"
+      href={href}
       aria-label="SunTech Recycle — home"
       onClick={onClick}
       className={`inline-flex items-center gap-2.5 font-display text-[19px] font-bold tracking-[-0.02em] text-ink ${className}`}
