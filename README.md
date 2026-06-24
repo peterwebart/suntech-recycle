@@ -149,6 +149,13 @@ The site is now bilingual. Architecture and remaining work:
 
 ---
 
+## Community impact & certification (latest)
+
+- **Community Impact** — a new homepage section (below the services area, above the final CTA) and a dedicated **`/community-impact`** page (+ `/fr/community-impact`), bilingual and SEO-tuned, with FAQ `FAQPage` structured data for rich results. Content is grounded in the **real, documented donation to École Saint-Lawrence** (Candiac) using the team photo and the thank-you letter as proof — framed for ESG/CSR and B2B trust. *Note:* the original prompt referenced an "autism" initiative, but the supplied proof is a school donation, so the copy reflects that truthfully; no unverifiable claim is published.
+- **Certification trust expansion** — the official **SERI R2v3 logo** (from `R2v3-Logo.zip`) now replaces the prior logo site-wide (`public/images/r2v3-logo.png` + `-white.png`). A reusable `CertTrustPanel` appears on the About page and every service-detail page (Electronics Recycling, Secure Data Destruction, etc.); the footer carries a certification trust line; and the R2v3 page gained an "Industries we serve" section.
+- **Images** — `suntech-community-team.jpg` is cropped from the WhatsApp screenshot (iMessage banner removed). For best print/retina quality, drop in the original full-resolution photo at the same path when available.
+- **Build status** — `pnpm lint` and `pnpm build` both pass clean (no warnings); ~218 routes (adds `/community-impact` + `/fr/community-impact`). Next.js `Image` with explicit width/height is used throughout to avoid layout shift.
+
 ## Deployment notes
 
 - Built to deploy on **Coolify** with the standard Next.js flow (`pnpm install` → `pnpm build` → `pnpm start`). No custom Dockerfile/Nginx/Traefik changes are part of this repository.

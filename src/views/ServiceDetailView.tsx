@@ -8,6 +8,7 @@ import { Shot } from "@/components/ui/Shot";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CertBadge } from "@/components/ui/CertBadge";
 import { BusinessValue } from "@/components/sections/BusinessValue";
+import { CertTrustPanel } from "@/components/sections/CertTrustPanel";
 import { PageCta } from "@/components/sections/PageCta";
 import { getServices, getService } from "@/data/services";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -104,6 +105,8 @@ export function ServiceDetailContent({ locale, service }: { locale: Locale; serv
           </div>
         </Container>
       </Section>
+
+      <CertTrustPanel locale={locale} tone="light" />
 
       <BusinessValue locale={locale} />
 

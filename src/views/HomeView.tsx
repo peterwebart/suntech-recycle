@@ -8,6 +8,7 @@ import { FreePickup } from "@/components/sections/FreePickup";
 import { Industries } from "@/components/sections/Industries";
 import { ESG } from "@/components/sections/ESG";
 import { WhyChoose } from "@/components/sections/WhyChoose";
+import { Community } from "@/components/sections/Community";
 import { FinalCTA } from "@/components/sections/FinalCTA";
 import { type Locale } from "@/i18n/config";
 
@@ -24,6 +25,7 @@ export function HomeContent({ locale = "en" }: { locale?: Locale }) {
       <Industries locale={locale} />
       <ESG locale={locale} />
       <WhyChoose locale={locale} tone="light" />
+      <Community locale={locale} />
       <FinalCTA locale={locale} />
     </>
   );

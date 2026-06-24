@@ -142,6 +142,25 @@ export function CertificationContent({ locale = "en" }: { locale?: Locale }) {
         </Container>
       </Section>
 
+      <Section tone="light">
+        <Container>
+          <div data-reveal className="max-w-[64ch]">
+            <Eyebrow>{tcert.industriesTitle}</Eyebrow>
+            <h2 className="mt-3.5 text-[clamp(24px,3.6vw,36px)]">{tcert.industriesTitle}</h2>
+          </div>
+          <ul className="mt-8 flex flex-wrap gap-2.5">
+            {t.industries.names.map((name) => (
+              <li
+                key={name}
+                className="rounded-full border border-line bg-paper px-4 py-2.5 text-[14.5px] font-medium text-ink"
+              >
+                {name}
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+
       <PageCta
         locale={locale}
         title="Work with a certified recycler"

@@ -64,6 +64,7 @@ const en = {
     contact: "Contact",
     allServiceAreas: "All service areas →",
     rights: "All rights reserved.",
+    trustLine: "Certified electronics recycling & secure IT asset disposition",
   },
   breadcrumbs: {
     home: "Home",
@@ -448,6 +449,92 @@ const en = {
     benefitsTitle: "What certification gives you",
     chainTitle: "Chain of custody & standards",
     standardsTitle: "Standards we operate to",
+    industriesTitle: "Industries we serve",
+  },
+  certPanel: {
+    eyebrow: "Certified",
+    title: "R2v3-certified electronics recycling & secure ITAD",
+    body: "Every asset SunTech handles is processed under our SERI R2v3 certification — independently audited for secure data destruction, responsible recycling and downstream accountability. For your organization that means industry best practices, data security, environmental stewardship and corporate compliance on every job.",
+  },
+  community: {
+    eyebrow: "Community impact",
+    title: "Recycling that gives back to our community",
+    intro:
+      "When businesses recycle their electronics with SunTech, the impact reaches beyond e-waste diversion. A portion of the value we recover from retired IT assets is reinvested locally — including a recent donation to École Saint-Lawrence, a bilingual school in Candiac on Montréal's South Shore. Responsible electronics recycling and IT asset disposition, done well, create environmental and social value at the same time.",
+    imageAlt:
+      "The SunTech Recycle team presenting a donation to École Saint-Lawrence in Candiac, Québec",
+    cta: "Learn about our community impact",
+    cards: [
+      {
+        title: "ESG reporting",
+        body: "Strengthen your sustainability and social-responsibility objectives with verified diversion data and a partner who reinvests in the community.",
+      },
+      {
+        title: "Community impact",
+        body: "Help fund local initiatives — like our donation to École Saint-Lawrence — every time you retire hardware responsibly.",
+      },
+      {
+        title: "Responsible recycling",
+        body: "Retired electronics are processed through certified, responsible recycling channels — never landfilled, never dumped downstream.",
+      },
+      {
+        title: "Corporate reputation",
+        body: "Demonstrate a real commitment to environmental and social initiatives that customers, staff and auditors increasingly expect.",
+      },
+    ],
+  },
+  communityPage: {
+    metaTitle:
+      "Community Impact — Responsible Electronics Recycling That Gives Back | SunTech Recycle",
+    metaDescription:
+      "SunTech Recycle turns corporate electronics recycling and IT asset disposition into community impact — reinvesting recovered value into local initiatives like École Saint-Lawrence, while helping businesses strengthen their ESG and CSR commitments.",
+    eyebrow: "Community impact",
+    h1: "Technology recycling that creates real community impact",
+    heroIntro:
+      "We believe responsible electronics recycling should benefit both the environment and the communities we operate in. When your business recycles electronics or retires IT assets with SunTech, you help fund local initiatives — and strengthen your own ESG and CSR commitments at the same time.",
+    commitmentTitle: "Our commitment",
+    commitmentBody:
+      "Secure electronics recycling and IT asset disposition are about more than diverting e-waste from landfill. As an R2v3 certified recycler we hold ourselves to industry best practices for data security and environmental stewardship — and we reinvest a portion of the value we recover from retired electronics back into the community.",
+    givingTitle: "Supporting local schools and families",
+    givingBody:
+      "We recently made a donation to École Saint-Lawrence, a bilingual school in Candiac on Montréal's South Shore, to support its students and learning environment. Giving back to local schools and families is how we want corporate electronics recycling to translate into real, measurable good close to home.",
+    letterCaption: "Thank-you letter from École Saint-Lawrence, Candiac (Québec)",
+    teamCaption: "The SunTech Recycle team — Greater Montréal",
+    techTitle: "Technology for good",
+    techBody:
+      "Functional equipment we recover through IT asset disposition is securely wiped and remarketed or refurbished, extending its useful life instead of being shredded. Recovered materials re-enter the supply chain. The result is a circular model where responsible recycling, value recovery and community support reinforce one another.",
+    esgTitle: "ESG & CSR benefits for businesses",
+    esgIntro:
+      "Partnering with a certified, community-minded recycler lets your organization manage retired IT assets responsibly while advancing measurable ESG and CSR goals.",
+    howTitle: "How corporate electronics recycling creates impact",
+    howIntro: "Every responsibly recycled load contributes on three fronts at once:",
+    howPoints: [
+      "Environmental — e-waste is diverted from landfill and materials are recovered back into the supply chain.",
+      "Social — a portion of recovered value supports local community initiatives and schools.",
+      "Governance — serialized data-destruction certificates and an audited chain of custody keep your disposal compliant and defensible.",
+    ],
+    faqTitle: "Frequently asked questions",
+    faq: [
+      {
+        q: "How does recycling with SunTech support the community?",
+        a: "A portion of the value we recover from retired electronics and IT assets is reinvested into local initiatives — for example, a recent donation to École Saint-Lawrence in Candiac. Choosing responsible electronics recycling with SunTech turns routine hardware disposal into local impact.",
+      },
+      {
+        q: "Can this support our company's ESG or CSR reporting?",
+        a: "Yes. We provide verified landfill-diversion and recovery data for your ESG and sustainability reporting, and working with an R2v3 certified, community-minded recycler is a concrete CSR story you can document.",
+      },
+      {
+        q: "Is my data still secure if recycling supports community programs?",
+        a: "Always. Community impact never changes our process: drives are wiped to NIST 800-88 or physically destroyed, each with a serialized certificate of destruction and a documented chain of custody.",
+      },
+      {
+        q: "Who can partner with SunTech for corporate electronics recycling?",
+        a: "We work with enterprise, government, healthcare, finance and other organizations across Greater Montréal and beyond — with free on-site collection locally and secure, trackable service elsewhere.",
+      },
+    ],
+    ctaTitle: "Retire your hardware the responsible way",
+    ctaBody:
+      "Recycle your business electronics with a certified partner that turns secure IT asset disposition into environmental and community impact.",
   },
 } satisfies Record<string, unknown>;
 
@@ -517,6 +604,7 @@ const fr: DeepPartial<Dict> = {
     contact: "Contact",
     allServiceAreas: "Toutes les zones desservies →",
     rights: "Tous droits réservés.",
+    trustLine: "Recyclage d’électronique certifié et disposition sécurisée des actifs TI",
   },
   breadcrumbs: {
     home: "Accueil",
@@ -905,6 +993,92 @@ const fr: DeepPartial<Dict> = {
     benefitsTitle: "Ce que la certification vous apporte",
     chainTitle: "Chaîne de possession et normes",
     standardsTitle: "Les normes que nous appliquons",
+    industriesTitle: "Les secteurs que nous servons",
+  },
+  certPanel: {
+    eyebrow: "Certifié",
+    title: "Recyclage d’électronique et ITAD sécurisé, certifiés R2v3",
+    body: "Chaque actif que traite SunTech passe par notre certification SERI R2v3 — auditée de façon indépendante pour la destruction sécurisée des données, le recyclage responsable et la traçabilité en aval. Pour votre organisation, cela signifie des pratiques exemplaires, la sécurité des données, l’intendance environnementale et la conformité corporative à chaque mandat.",
+  },
+  community: {
+    eyebrow: "Engagement communautaire",
+    title: "Un recyclage qui redonne à notre communauté",
+    intro:
+      "Quand les entreprises recyclent leur électronique avec SunTech, l’impact dépasse le simple détournement des déchets électroniques. Une partie de la valeur récupérée de vos actifs TI retirés est réinvestie localement — incluant un don récent à l’École Saint-Lawrence, une école bilingue de Candiac, sur la Rive-Sud de Montréal. Le recyclage informatique responsable et la disposition des actifs TI, bien faits, créent une valeur environnementale et sociale à la fois.",
+    imageAlt:
+      "L’équipe de SunTech Recycle remettant un don à l’École Saint-Lawrence à Candiac, au Québec",
+    cta: "Découvrir notre engagement communautaire",
+    cards: [
+      {
+        title: "Rapports ESG",
+        body: "Renforcez vos objectifs de durabilité et de responsabilité sociale avec des données de détournement vérifiées et un partenaire qui réinvestit dans la communauté.",
+      },
+      {
+        title: "Impact communautaire",
+        body: "Contribuez à financer des initiatives locales — comme notre don à l’École Saint-Lawrence — chaque fois que vous retirez du matériel de façon responsable.",
+      },
+      {
+        title: "Recyclage responsable",
+        body: "L’électronique retirée est traitée par des filières de recyclage certifiées et responsables — jamais enfouie, jamais abandonnée en aval.",
+      },
+      {
+        title: "Réputation corporative",
+        body: "Démontrez un engagement réel envers des initiatives environnementales et sociales que clients, employés et auditeurs attendent de plus en plus.",
+      },
+    ],
+  },
+  communityPage: {
+    metaTitle:
+      "Engagement communautaire — Un recyclage d’électronique responsable qui redonne | SunTech Recycle",
+    metaDescription:
+      "SunTech Recycle transforme le recyclage informatique d’entreprise et la disposition des actifs TI en impact communautaire — en réinvestissant la valeur récupérée dans des initiatives locales comme l’École Saint-Lawrence, tout en aidant les entreprises à renforcer leurs engagements ESG et RSE.",
+    eyebrow: "Engagement communautaire",
+    h1: "Un recyclage technologique qui crée un véritable impact communautaire",
+    heroIntro:
+      "Nous croyons que le recyclage d’électronique responsable devrait profiter à la fois à l’environnement et aux communautés où nous intervenons. Quand votre entreprise recycle son électronique ou retire ses actifs TI avec SunTech, vous aidez à financer des initiatives locales — tout en renforçant vos propres engagements ESG et RSE.",
+    commitmentTitle: "Notre engagement",
+    commitmentBody:
+      "Le recyclage d’électronique sécurisé et la disposition des actifs TI, c’est plus que détourner les déchets électroniques de l’enfouissement. À titre de recycleur certifié R2v3, nous nous imposons des pratiques exemplaires en matière de sécurité des données et d’intendance environnementale — et nous réinvestissons une partie de la valeur récupérée dans la communauté.",
+    givingTitle: "Appuyer les écoles et les familles d’ici",
+    givingBody:
+      "Nous avons récemment fait un don à l’École Saint-Lawrence, une école bilingue de Candiac sur la Rive-Sud de Montréal, pour appuyer ses élèves et son milieu d’apprentissage. Redonner aux écoles et aux familles locales, c’est ainsi que nous voulons que le recyclage informatique d’entreprise se traduise par un bien réel et mesurable, tout près de chez nous.",
+    letterCaption: "Lettre de remerciement de l’École Saint-Lawrence, Candiac (Québec)",
+    teamCaption: "L’équipe de SunTech Recycle — Grand Montréal",
+    techTitle: "La technologie au service du bien",
+    techBody:
+      "L’équipement fonctionnel que nous récupérons par la disposition des actifs TI est effacé de façon sécurisée puis remis en marché ou remis à neuf, prolongeant sa vie utile plutôt que d’être déchiqueté. Les matériaux récupérés réintègrent la chaîne d’approvisionnement. Le résultat est un modèle circulaire où recyclage responsable, récupération de valeur et soutien communautaire se renforcent mutuellement.",
+    esgTitle: "Avantages ESG et RSE pour les entreprises",
+    esgIntro:
+      "S’associer à un recycleur certifié et engagé dans sa communauté permet à votre organisation de gérer ses actifs TI retirés de façon responsable tout en faisant progresser des objectifs ESG et RSE mesurables.",
+    howTitle: "Comment le recyclage informatique d’entreprise crée de l’impact",
+    howIntro: "Chaque chargement recyclé de façon responsable contribue sur trois plans à la fois :",
+    howPoints: [
+      "Environnemental — les déchets électroniques sont détournés de l’enfouissement et les matériaux sont récupérés dans la chaîne d’approvisionnement.",
+      "Social — une partie de la valeur récupérée appuie des initiatives communautaires et des écoles locales.",
+      "Gouvernance — des certificats de destruction sérialisés et une chaîne de possession auditée gardent votre disposition conforme et défendable.",
+    ],
+    faqTitle: "Foire aux questions",
+    faq: [
+      {
+        q: "Comment le recyclage avec SunTech appuie-t-il la communauté?",
+        a: "Une partie de la valeur que nous récupérons de l’électronique et des actifs TI retirés est réinvestie dans des initiatives locales — par exemple, un don récent à l’École Saint-Lawrence à Candiac. Choisir le recyclage informatique responsable avec SunTech transforme une simple disposition de matériel en impact local.",
+      },
+      {
+        q: "Est-ce que cela peut appuyer nos rapports ESG ou RSE?",
+        a: "Oui. Nous fournissons des données vérifiées de détournement et de récupération pour vos rapports ESG et de durabilité, et travailler avec un recycleur certifié R2v3 engagé dans sa communauté est une histoire RSE concrète et documentable.",
+      },
+      {
+        q: "Mes données restent-elles sécurisées si le recyclage appuie des programmes communautaires?",
+        a: "Toujours. L’impact communautaire ne change jamais notre processus : les disques sont effacés selon NIST 800-88 ou détruits physiquement, chacun avec un certificat de destruction sérialisé et une chaîne de possession documentée.",
+      },
+      {
+        q: "Qui peut s’associer à SunTech pour le recyclage d’électronique d’entreprise?",
+        a: "Nous travaillons avec des entreprises, le gouvernement, la santé, la finance et d’autres organisations dans le Grand Montréal et au-delà — avec collecte sur place gratuite localement et service sécurisé et traçable ailleurs.",
+      },
+    ],
+    ctaTitle: "Retirez votre matériel de façon responsable",
+    ctaBody:
+      "Recyclez l’électronique de votre entreprise avec un partenaire certifié qui transforme la disposition sécurisée des actifs TI en impact environnemental et communautaire.",
   },
 };
 

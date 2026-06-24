@@ -14,6 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/r2v3-certification",
     "/contact",
+    "/community-impact",
   ];
   const servicePaths = serviceSlugs.map((s) => `/services/${s}`);
   const locationPaths = locationSlugs.map((l) => `/locations/${l}`);

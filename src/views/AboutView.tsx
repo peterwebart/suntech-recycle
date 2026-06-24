@@ -7,6 +7,7 @@ import { Shot } from "@/components/ui/Shot";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CertBadge } from "@/components/ui/CertBadge";
 import { WhyChoose } from "@/components/sections/WhyChoose";
+import { CertTrustPanel } from "@/components/sections/CertTrustPanel";
 import { PageCta } from "@/components/sections/PageCta";
 import { site, fullAddress } from "@/data/site";
 import { getDictionary } from "@/i18n/dictionaries";
@@ -129,7 +130,8 @@ export function AboutContent({ locale = "en" }: { locale?: Locale }) {
         </Container>
       </Section>
 
-      <WhyChoose locale={locale} tone="light" />
+      <CertTrustPanel locale={locale} tone="light" />
+      <WhyChoose locale={locale} tone="paper" />
       <PageCta locale={locale} />
     </>
   );

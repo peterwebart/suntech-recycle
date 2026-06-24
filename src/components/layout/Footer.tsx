@@ -35,6 +35,9 @@ export function Footer() {
             <div className="mt-5">
               <CertBadge variant="dark" size={48} locale={locale} />
             </div>
+            <p className="mt-3 max-w-[34ch] text-[12.5px] leading-relaxed text-[#83a48d]">
+              {f.trustLine}
+            </p>
             <nav aria-label={f.company} className="mt-6">
               <ul className="flex flex-wrap gap-x-5 gap-y-2 text-[14px]">
                 <li>
@@ -45,6 +48,11 @@ export function Footer() {
                 <li>
                   <Link href={lp(locale, "/r2v3-certification")} className="transition-colors hover:text-white">
                     {t.breadcrumbs.certification}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={lp(locale, "/community-impact")} className="transition-colors hover:text-white">
+                    {t.communityPage.eyebrow}
                   </Link>
                 </li>
                 <li>
