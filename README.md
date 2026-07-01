@@ -156,6 +156,17 @@ The site is now bilingual. Architecture and remaining work:
 - **Images** — `suntech-community-team.jpg` is cropped from the WhatsApp screenshot (iMessage banner removed). For best print/retina quality, drop in the original full-resolution photo at the same path when available.
 - **Build status** — `pnpm lint` and `pnpm build` both pass clean (no warnings); ~218 routes (adds `/community-impact` + `/fr/community-impact`). Next.js `Image` with explicit width/height is used throughout to avoid layout shift.
 
+## Website improvements & collection form (latest)
+
+- **Official R2 logo** — the attached SERI **R2 v3 CERTIFIED** logo replaces the previous mark everywhere (`public/images/r2v3-logo.png`). It's the supplied logo, only cropped from the screenshot and squared — never redrawn or recolored. `CertBadge` renders it as a rounded seal so it sits cleanly on light and dark surfaces.
+- **French URLs** — French routes are now fully translated: `/fr/a-propos`, `/fr/emplacements` (+ `/fr/emplacements/[city]`), `/fr/collecte`, `/fr/certification-r2v3`, `/fr/impact-communautaire` (services/contact keep their words). Slug translation lives in `lp()` / `switchLocalePath()`, so navigation, breadcrumbs, canonical, hreflang, sitemap and internal links all follow. Old English-slug French URLs **301/308-redirect** to the new ones (see `next.config.ts`).
+- **Favicon & PWA** — `app/icon.png`, `app/apple-icon.png`, `app/favicon.ico` (16/32/48) and `app/manifest.ts` (theme `#0f6b3a`, 192/512 icons) — a forest-green "S" monogram, auto-wired by Next on every tab.
+- **Mexico removed** — dropped from the data layer, navigation, structured data, sitemap and all copy (now Canada + United States only). `/locations/mexico` returns 404.
+- **Collection page → B2B lead form** — a full request form now sits at the top of `/collection` (and `/fr/collecte`): required First/Last/Email/Phone + "How can we assist?" dropdown, optional address/items/date/time/equipment/comments, consent checkbox, inline validation, and a hidden honeypot. Submits to the **`/api/collection`** route (Node runtime), which generates a reference (`STR-2026-######`), emails **nick@suntechrecycle.com** (Reply-To = customer) plus a confirmation email to the customer via **nodemailer/SMTP**, and returns the reference. A premium **thank-you page** (`/collection/thank-you`, `/fr/collecte/merci`) shows the reference, submitted summary, next steps and contact.
+  - **Action required:** set the SMTP variables in Coolify (see `.env.example`) for emails to actually send. Until then the form still works and shows the thank-you + reference; no email goes out. The app runs in server mode, so the API route works in production.
+- **Terminology** — copy standardized on "collection" (no "removal"/"pickup service").
+- **Build status** — `pnpm lint` and `pnpm build` pass clean (no warnings). Form fields, validation, honeypot, reference generation, thank-you flow, redirects and favicons all verified.
+
 ## Deployment notes
 
 - Built to deploy on **Coolify** with the standard Next.js flow (`pnpm install` → `pnpm build` → `pnpm start`). No custom Dockerfile/Nginx/Traefik changes are part of this repository.

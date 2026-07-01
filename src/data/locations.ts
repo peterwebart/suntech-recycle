@@ -3,7 +3,7 @@ import { site } from "@/data/site";
 /**
  * Location dataset for the programmatic service-area pages.
  *
- * Structure: three country landing pages (Canada / United States / Mexico),
+ * Structure: two country landing pages (Canada / United States),
  * the Greater-Montréal hub cities (with on-site collection + local reviews),
  * a large set of Montréal neighbourhoods, and major cities across each country.
  *
@@ -25,7 +25,7 @@ export type Review = {
 };
 
 export type LocationKind = "country" | "city" | "neighbourhood";
-export type CountryName = "Canada" | "United States" | "Mexico";
+export type CountryName = "Canada" | "United States";
 
 export type Location = {
   slug: string;
@@ -52,7 +52,6 @@ export type Location = {
 const COUNTRY_SLUG: Record<CountryName, string> = {
   Canada: "canada",
   "United States": "united-states",
-  Mexico: "mexico",
 };
 
 /* ── Greater-Montréal hubs (full local service + reviews) ─────────────────── */
@@ -559,25 +558,6 @@ function usCity([slug, name, region, lat, lng]: Tuple, locale: Locale = "en"): L
   };
 }
 
-function mexicoCity([slug, name, region, lat, lng]: Tuple, locale: Locale = "en"): Location {
-  const intro =
-    locale === "fr"
-      ? `SunTech Recycle appuie les entreprises de ${name}, ${region} avec une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique. Le traitement sécurisé et la collecte par projet offrent aux organisations partout au Mexique une voie certifiée et responsable pour retirer leurs actifs TI et électroniques.`
-      : `SunTech Recycle supports businesses in ${name}, ${region} with R2v3 certified IT asset disposition, secure data destruction and electronics recycling. Secure processing and project-based collection give organizations across Mexico an accountable, certified path for retiring IT and electronic assets.`;
-  return {
-    slug,
-    name,
-    kind: "city",
-    country: "Mexico",
-    countrySlug: "mexico",
-    region,
-    lat,
-    lng,
-    zoom: 11,
-    intro,
-    seo: citySeo(name, region, locale),
-  };
-}
 
 /* ── Raw lists ────────────────────────────────────────────────────────────── */
 
@@ -657,20 +637,6 @@ const usCities: Tuple[] = [
   ["washington-dc", "Washington, D.C.", "District of Columbia", 38.9072, -77.0369],
 ];
 
-const mexicoCities: Tuple[] = [
-  ["mexico-city", "Mexico City", "CDMX", 19.4326, -99.1332],
-  ["guadalajara", "Guadalajara", "Jalisco", 20.6597, -103.3496],
-  ["monterrey", "Monterrey", "Nuevo León", 25.6866, -100.3161],
-  ["puebla", "Puebla", "Puebla", 19.0414, -98.2063],
-  ["tijuana", "Tijuana", "Baja California", 32.5149, -117.0382],
-  ["leon", "León", "Guanajuato", 21.1219, -101.6833],
-  ["queretaro", "Querétaro", "Querétaro", 20.5888, -100.3899],
-  ["ciudad-juarez", "Ciudad Juárez", "Chihuahua", 31.6904, -106.4245],
-  ["merida", "Mérida", "Yucatán", 20.9674, -89.5926],
-  ["cancun", "Cancún", "Quintana Roo", 21.1619, -86.8515],
-  ["san-luis-potosi", "San Luis Potosí", "San Luis Potosí", 22.1565, -100.9855],
-  ["aguascalientes", "Aguascalientes", "Aguascalientes", 21.8853, -102.2916],
-];
 
 /* ── Country landing pages ────────────────────────────────────────────────── */
 
@@ -711,24 +677,6 @@ const countries: Location[] = [
         "R2v3 certified IT asset disposition, secure data destruction and commercial electronics recycling for businesses across the United States. Secure mail-in and project-based collection.",
     },
   },
-  {
-    slug: "mexico",
-    name: "Mexico",
-    kind: "country",
-    country: "Mexico",
-    countrySlug: "mexico",
-    region: "Mexico",
-    lat: 23.6,
-    lng: -102.5,
-    zoom: 5,
-    intro:
-      "SunTech Recycle provides R2v3 certified IT asset disposition, secure data destruction and electronics recycling for businesses across Mexico, with secure processing and project-based collection for organizations retiring IT and electronic assets.",
-    seo: {
-      title: "Electronics Recycling, ITAD & Data Destruction in Mexico | SunTech Recycle",
-      description:
-        "R2v3 certified IT asset disposition, secure data destruction and commercial electronics recycling for businesses across Mexico. Secure processing and project-based collection.",
-    },
-  },
 ];
 
 /* ── French overlay for bespoke (hub + country) intro/seo ─────────────────── */
@@ -750,15 +698,6 @@ const bespokeFr: Record<string, Bespoke> = {
       title: "Recyclage d’électronique, ITAD et destruction de données aux États-Unis | SunTech Recycle",
       description:
         "Disposition des actifs TI certifiée R2v3, destruction sécurisée des données et recyclage d’électronique commercial pour les entreprises partout aux États-Unis. Service par envoi sécurisé et collecte par projet.",
-    },
-  },
-  mexico: {
-    intro:
-      "SunTech Recycle offre une disposition des actifs TI certifiée R2v3, une destruction sécurisée des données et un recyclage d’électronique pour les entreprises partout au Mexique, avec traitement sécurisé et collecte par projet pour les organisations qui retirent leurs actifs TI et électroniques.",
-    seo: {
-      title: "Recyclage d’électronique, ITAD et destruction de données au Mexique | SunTech Recycle",
-      description:
-        "Disposition des actifs TI certifiée R2v3, destruction sécurisée des données et recyclage d’électronique commercial pour les entreprises partout au Mexique. Traitement sécurisé et collecte par projet.",
     },
   },
   montreal: {
@@ -850,7 +789,6 @@ function buildLocations(locale: Locale): Location[] {
     ...montrealNeighbourhoods.map((t) => neighbourhood(t, locale)),
     ...canadaCities.map((t) => canadaCity(t, locale)),
     ...usCities.map((t) => usCity(t, locale)),
-    ...mexicoCities.map((t) => mexicoCity(t, locale)),
   ];
 }
 

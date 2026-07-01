@@ -34,7 +34,7 @@ export function CertBadge({
         alt="SERI R2v3 certified electronics recycler logo"
         width={size}
         height={size}
-        className="shrink-0"
+        className="shrink-0 rounded-lg ring-1 ring-black/5"
       />
       {showText && (
         <span className="flex flex-col leading-tight">

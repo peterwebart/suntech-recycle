@@ -40,20 +40,18 @@ const en = {
       "Collection, secure data destruction, IT asset disposition and recovery under a single chain of custody.",
     servicesFeaturedCta: "View all services",
     areasColumn: "Where we operate",
-    areasFeaturedTitle: "Across Canada, the US & Mexico",
+    areasFeaturedTitle: "Across Canada & the US",
     areasFeaturedBody:
       "Local collection across Greater Montréal, plus secure mail-in ITAD and data destruction North-America-wide.",
     areasFeaturedCta: "See all areas",
     areaAllCanada: "All Canadian cities",
     areaAllUs: "All US cities",
-    areaAllMexico: "All Mexican cities",
     regionIslandMontreal: "Island of Montréal",
     regionNorthShore: "North Shore",
     regionSouthShoreFacility: "South Shore · facility",
     regionOntario: "Ontario",
     regionBC: "British Columbia",
     regionUS: "United States",
-    regionMexico: "Mexico",
   },
   footer: {
     blurb:
@@ -262,13 +260,13 @@ const en = {
     otherServices: "Other services",
   },
   locationsIndex: {
-    metaTitle: "Service Areas — Canada, USA & Mexico | SunTech Recycle",
+    metaTitle: "Service Areas — Canada & USA | SunTech Recycle",
     metaDescription:
-      "R2v3 certified electronics recycling, secure data destruction and ITAD. Free on-site collection across Greater Montréal, plus secure service for businesses across Canada, the United States and Mexico.",
+      "R2v3 certified electronics recycling, secure data destruction and ITAD. Free on-site collection across Greater Montréal, plus secure service for businesses across Canada and the United States.",
     eyebrow: "Service areas",
     h1: "Local in Montréal. Certified across North America.",
     intro:
-      "From our facility in Longueuil we provide fast, free on-site collection across Greater Montréal — and secure, fully trackable IT asset disposition and data destruction for businesses across Canada, the United States and Mexico.",
+      "From our facility in Longueuil we provide fast, free on-site collection across Greater Montréal — and secure, fully trackable IT asset disposition and data destruction for businesses across Canada and the United States.",
     mapCaption: "Orange marks our Longueuil facility · green marks cities we serve",
     hubsEyebrow: "Greater Montréal — our home region",
     hubsTitle: "Free on-site collection, same-week scheduling",
@@ -313,11 +311,11 @@ const en = {
   collection: {
     metaTitle: "Request a Free Business Collection | SunTech Recycle",
     metaDescription:
-      "Book a free, R2v3 certified electronics collection for your business. Computers, servers, monitors and IT assets collected with sealed transport, secure data destruction and a serialized certificate. Free on-site collection across Greater Montréal; secure service across Canada, the USA and Mexico.",
+      "Book a free, R2v3 certified electronics collection for your business. Computers, servers, monitors and IT assets collected with sealed transport, secure data destruction and a serialized certificate. Free on-site collection across Greater Montréal; secure service across Canada and the USA.",
     eyebrow: "Request a collection",
     h1: "Book a free business collection.",
     intro:
-      "Free, R2v3 certified collection of your retired computers, servers and electronics — sealed transport, secure data destruction and a serialized certificate on every drive. Free on-site collection across Greater Montréal; secure, trackable service across Canada, the United States and Mexico.",
+      "Free, R2v3 certified collection of your retired computers, servers and electronics — sealed transport, secure data destruction and a serialized certificate on every drive. Free on-site collection across Greater Montréal; secure, trackable service across Canada and the United States.",
     howEyebrow: "How collection works",
     howTitle: "Four steps, fully documented",
     steps: [
@@ -380,14 +378,14 @@ const en = {
     freeLink: "See Greater Montréal coverage",
     secureTitle: "Secure service across North America",
     secureBody:
-      "Outside the Montréal region — or for smaller volumes — we arrange secure, fully trackable transport and mail-in data destruction for businesses across Canada, the USA and Mexico.",
+      "Outside the Montréal region — or for smaller volumes — we arrange secure, fully trackable transport and mail-in data destruction for businesses across Canada and the USA.",
     secureLink: "View all service areas",
     ctaTitle: "Ready to clear out your old hardware?",
     ctaBody: (phone: string) =>
       `Send a rough inventory and we’ll come back within one business day with a collection window and a quote where one applies. Prefer to talk it through? Call ${phone}.`,
     mailSubject: "Free business collection request",
     mailBody:
-      "Hi SunTech,\n\nWe'd like to book a collection.\n\n- Equipment & approximate volume:\n- Pickup location (address / city):\n- Data destruction required (yes/no):\n- Preferred date / timeline:\n- Loading dock or floor access notes:\n\nThanks,",
+      "Hi SunTech,\n\nWe'd like to book a collection.\n\n- Equipment & approximate volume:\n- Collection location (address / city):\n- Data destruction required (yes/no):\n- Preferred date / timeline:\n- Loading dock or floor access notes:\n\nThanks,",
   },
   contact: {
     metaTitle: "Contact SunTech Recycle | Free Corporate Recycling Quote",
@@ -402,7 +400,7 @@ const en = {
     email: "Email",
     hours: "Hours",
     emailQuote: "Email a quote request",
-    bookingPickup: "Booking a pickup?",
+    bookingPickup: "Booking a collection?",
     mailSubject: "Corporate recycling quote request",
     mailBody:
       "Hi SunTech,\n\nWe'd like a quote. Roughly what we need to retire:\n- Equipment / volume:\n- Location:\n- Data destruction required (yes/no):\n- Timeline:\n\nThanks,",
@@ -536,6 +534,65 @@ const en = {
     ctaBody:
       "Recycle your business electronics with a certified partner that turns secure IT asset disposition into environmental and community impact.",
   },
+  collectionForm: {
+    title: "Request a collection",
+    intro: "Tell us what you need to retire — we respond within one business day.",
+    moreTitle: "Collection details",
+    moreHint: "Optional — the more you share, the faster we can scope your collection.",
+    optional: "optional",
+    firstName: "First name",
+    lastName: "Last name",
+    company: "Company name",
+    email: "Email",
+    phone: "Phone number",
+    assistLabel: "How can we assist you?",
+    assistPlaceholder: "Select an option",
+    assistOptions: {
+      scheduled: "Scheduled collection service",
+      donation: "Donation program",
+      data: "Data security and data destruction options",
+      media: "Media enquiry",
+      volunteer: "Volunteering at ERA",
+      other: "Other",
+    },
+    businessAddress: "Business address",
+    city: "City",
+    provinceState: "Province / State",
+    postalZip: "Postal / ZIP code",
+    numberOfItems: "Number of items",
+    estimatedPickupDate: "Estimated pickup date",
+    preferredCollectionTime: "Preferred collection time",
+    typeOfEquipment: "Type of equipment",
+    comments: "Comments",
+    consent: "I agree to be contacted regarding this request.",
+    submit: "Request collection",
+    submitting: "Sending…",
+    errRequired: "This field is required",
+    errEmail: "Enter a valid email address",
+    errPhone: "Enter a valid phone number",
+    errConsent: "Please confirm you agree to be contacted",
+    errSubmit: "Something went wrong. Please try again or call us at (514) 808-4061.",
+  },
+  thankYou: {
+    metaTitle: "Thank You — Collection Request Received | SunTech Recycle",
+    metaDescription:
+      "Your business electronics collection request has been received. A SunTech Recycle team member will respond within one business day.",
+    eyebrow: "Request received",
+    h1: "Thank you for your collection request",
+    confirm:
+      "We’ve received your request and a member of our team will be in touch within one business day.",
+    refLabel: "Your reference number",
+    summaryTitle: "What you submitted",
+    responseTitle: "What happens next",
+    responseBody:
+      "Our team reviews your request and replies within one business day with next steps, scheduling and any documentation you need. A confirmation email is on its way to you.",
+    contactTitle: "Contact us",
+    btnHome: "Return home",
+    btnAnother: "Request another collection",
+    btnContact: "Contact us",
+    noData:
+      "Your request has been received. A confirmation email is on its way — keep your reference number for your records.",
+  },
 } satisfies Record<string, unknown>;
 
 type Dict = typeof en;
@@ -580,20 +637,18 @@ const fr: DeepPartial<Dict> = {
       "Collecte, destruction sécurisée des données, disposition des actifs TI et récupération sous une seule chaîne de possession.",
     servicesFeaturedCta: "Voir tous les services",
     areasColumn: "Où nous intervenons",
-    areasFeaturedTitle: "Au Canada, aux États-Unis et au Mexique",
+    areasFeaturedTitle: "Au Canada, aux États-Unis",
     areasFeaturedBody:
       "Collecte locale dans le Grand Montréal, plus disposition des actifs TI et destruction des données par envoi sécurisé partout en Amérique du Nord.",
     areasFeaturedCta: "Voir toutes les zones",
     areaAllCanada: "Toutes les villes canadiennes",
     areaAllUs: "Toutes les villes américaines",
-    areaAllMexico: "Toutes les villes mexicaines",
     regionIslandMontreal: "Île de Montréal",
     regionNorthShore: "Rive-Nord",
     regionSouthShoreFacility: "Rive-Sud · usine",
     regionOntario: "Ontario",
     regionBC: "Colombie-Britannique",
     regionUS: "États-Unis",
-    regionMexico: "Mexique",
   },
   footer: {
     blurb:
@@ -802,13 +857,13 @@ const fr: DeepPartial<Dict> = {
     otherServices: "Autres services",
   },
   locationsIndex: {
-    metaTitle: "Zones desservies — Canada, États-Unis et Mexique | SunTech Recycle",
+    metaTitle: "Zones desservies — Canada et États-Unis | SunTech Recycle",
     metaDescription:
-      "Recyclage d’électronique certifié R2v3, destruction sécurisée des données et ITAD. Collecte gratuite sur place dans le Grand Montréal, plus service sécurisé pour les entreprises au Canada, aux États-Unis et au Mexique.",
+      "Recyclage d’électronique certifié R2v3, destruction sécurisée des données et ITAD. Collecte gratuite sur place dans le Grand Montréal, plus service sécurisé pour les entreprises au Canada et aux États-Unis.",
     eyebrow: "Zones desservies",
     h1: "Local à Montréal. Certifié partout en Amérique du Nord.",
     intro:
-      "Depuis notre usine de Longueuil, nous offrons une collecte sur place rapide et gratuite dans le Grand Montréal — et une disposition des actifs TI et une destruction des données sécurisées et entièrement traçables pour les entreprises au Canada, aux États-Unis et au Mexique.",
+      "Depuis notre usine de Longueuil, nous offrons une collecte sur place rapide et gratuite dans le Grand Montréal — et une disposition des actifs TI et une destruction des données sécurisées et entièrement traçables pour les entreprises au Canada et aux États-Unis.",
     mapCaption:
       "L’orange indique notre usine de Longueuil · le vert indique les villes desservies",
     hubsEyebrow: "Grand Montréal — notre région d’attache",
@@ -857,11 +912,11 @@ const fr: DeepPartial<Dict> = {
   collection: {
     metaTitle: "Demander une collecte d’entreprise gratuite | SunTech Recycle",
     metaDescription:
-      "Réservez une collecte d’électronique gratuite et certifiée R2v3 pour votre entreprise. Ordinateurs, serveurs, écrans et actifs TI collectés avec transport scellé, destruction sécurisée des données et certificat sérialisé. Collecte gratuite sur place dans le Grand Montréal; service sécurisé au Canada, aux États-Unis et au Mexique.",
+      "Réservez une collecte d’électronique gratuite et certifiée R2v3 pour votre entreprise. Ordinateurs, serveurs, écrans et actifs TI collectés avec transport scellé, destruction sécurisée des données et certificat sérialisé. Collecte gratuite sur place dans le Grand Montréal; service sécurisé au Canada et aux États-Unis.",
     eyebrow: "Demander une collecte",
     h1: "Réservez une collecte d’entreprise gratuite.",
     intro:
-      "Collecte gratuite et certifiée R2v3 de vos ordinateurs, serveurs et appareils électroniques retirés — transport scellé, destruction sécurisée des données et certificat sérialisé sur chaque disque. Collecte gratuite sur place dans le Grand Montréal; service sécurisé et traçable au Canada, aux États-Unis et au Mexique.",
+      "Collecte gratuite et certifiée R2v3 de vos ordinateurs, serveurs et appareils électroniques retirés — transport scellé, destruction sécurisée des données et certificat sérialisé sur chaque disque. Collecte gratuite sur place dans le Grand Montréal; service sécurisé et traçable au Canada et aux États-Unis.",
     howEyebrow: "Comment se déroule la collecte",
     howTitle: "Quatre étapes, entièrement documentées",
     steps: [
@@ -924,7 +979,7 @@ const fr: DeepPartial<Dict> = {
     freeLink: "Voir la couverture du Grand Montréal",
     secureTitle: "Service sécurisé partout en Amérique du Nord",
     secureBody:
-      "À l’extérieur de la région de Montréal — ou pour de plus petits volumes — nous organisons un transport sécurisé et entièrement traçable et une destruction des données par envoi pour les entreprises au Canada, aux États-Unis et au Mexique.",
+      "À l’extérieur de la région de Montréal — ou pour de plus petits volumes — nous organisons un transport sécurisé et entièrement traçable et une destruction des données par envoi pour les entreprises au Canada et aux États-Unis.",
     secureLink: "Voir toutes les zones desservies",
     ctaTitle: "Prêt à vous débarrasser de votre vieux matériel?",
     ctaBody: (phone: string) =>
@@ -1079,6 +1134,65 @@ const fr: DeepPartial<Dict> = {
     ctaTitle: "Retirez votre matériel de façon responsable",
     ctaBody:
       "Recyclez l’électronique de votre entreprise avec un partenaire certifié qui transforme la disposition sécurisée des actifs TI en impact environnemental et communautaire.",
+  },
+  collectionForm: {
+    title: "Demander une collecte",
+    intro: "Dites-nous ce que vous devez retirer — nous répondons sous un jour ouvrable.",
+    moreTitle: "Détails de la collecte",
+    moreHint: "Facultatif — plus vous en dites, plus vite nous pouvons planifier votre collecte.",
+    optional: "facultatif",
+    firstName: "Prénom",
+    lastName: "Nom",
+    company: "Nom de l’entreprise",
+    email: "Courriel",
+    phone: "Numéro de téléphone",
+    assistLabel: "Comment pouvons-nous vous aider?",
+    assistPlaceholder: "Sélectionnez une option",
+    assistOptions: {
+      scheduled: "Service de collecte planifiée",
+      donation: "Programme de dons",
+      data: "Options de sécurité et de destruction des données",
+      media: "Demande des médias",
+      volunteer: "Bénévolat chez ERA",
+      other: "Autre",
+    },
+    businessAddress: "Adresse de l’entreprise",
+    city: "Ville",
+    provinceState: "Province / État",
+    postalZip: "Code postal / ZIP",
+    numberOfItems: "Nombre d’articles",
+    estimatedPickupDate: "Date de collecte estimée",
+    preferredCollectionTime: "Heure de collecte préférée",
+    typeOfEquipment: "Type d’équipement",
+    comments: "Commentaires",
+    consent: "J’accepte d’être contacté concernant cette demande.",
+    submit: "Demander une collecte",
+    submitting: "Envoi…",
+    errRequired: "Ce champ est requis",
+    errEmail: "Entrez une adresse courriel valide",
+    errPhone: "Entrez un numéro de téléphone valide",
+    errConsent: "Veuillez confirmer que vous acceptez d’être contacté",
+    errSubmit: "Une erreur est survenue. Réessayez ou appelez-nous au (514) 808-4061.",
+  },
+  thankYou: {
+    metaTitle: "Merci — Demande de collecte reçue | SunTech Recycle",
+    metaDescription:
+      "Votre demande de collecte d’électronique d’entreprise a été reçue. Un membre de l’équipe SunTech Recycle vous répondra sous un jour ouvrable.",
+    eyebrow: "Demande reçue",
+    h1: "Merci pour votre demande de collecte",
+    confirm:
+      "Nous avons bien reçu votre demande et un membre de notre équipe vous contactera sous un jour ouvrable.",
+    refLabel: "Votre numéro de référence",
+    summaryTitle: "Ce que vous avez soumis",
+    responseTitle: "Les prochaines étapes",
+    responseBody:
+      "Notre équipe examine votre demande et répond sous un jour ouvrable avec les prochaines étapes, la planification et toute documentation nécessaire. Un courriel de confirmation vous a été envoyé.",
+    contactTitle: "Nous joindre",
+    btnHome: "Retour à l’accueil",
+    btnAnother: "Faire une autre demande",
+    btnContact: "Nous contacter",
+    noData:
+      "Votre demande a été reçue. Un courriel de confirmation est en route — conservez votre numéro de référence.",
   },
 };
 

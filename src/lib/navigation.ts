@@ -20,20 +20,18 @@ export function getMainNav(locale: Locale): MainNavItem[] {
   const n = t.nav;
   const countryLabels =
     locale === "fr"
-      ? { ca: "Canada", us: "États-Unis", mx: "Mexique" }
-      : { ca: "Canada", us: "United States", mx: "Mexico" };
+      ? { ca: "Canada", us: "États-Unis" }
+      : { ca: "Canada", us: "United States" };
 
   const serviceAreaItems: MenuEntry[] = [
     { label: countryLabels.ca, href: lp(locale, "/locations/canada"), description: n.areaAllCanada },
     { label: countryLabels.us, href: lp(locale, "/locations/united-states"), description: n.areaAllUs },
-    { label: countryLabels.mx, href: lp(locale, "/locations/mexico"), description: n.areaAllMexico },
     { label: "Montréal", href: lp(locale, "/locations/montreal"), description: n.regionIslandMontreal },
     { label: "Laval", href: lp(locale, "/locations/laval"), description: n.regionNorthShore },
     { label: "Longueuil", href: lp(locale, "/locations/longueuil"), description: n.regionSouthShoreFacility },
     { label: "Toronto", href: lp(locale, "/locations/toronto"), description: n.regionOntario },
     { label: "Vancouver", href: lp(locale, "/locations/vancouver"), description: n.regionBC },
     { label: "New York", href: lp(locale, "/locations/new-york"), description: n.regionUS },
-    { label: "Mexico City", href: lp(locale, "/locations/mexico-city"), description: n.regionMexico },
   ];
 
   return [

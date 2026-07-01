@@ -6,6 +6,7 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { Button } from "@/components/ui/Button";
 import { Breadcrumbs } from "@/components/ui/Breadcrumbs";
 import { CertBadge } from "@/components/ui/CertBadge";
+import { CollectionForm } from "@/components/collection/CollectionForm";
 import { site } from "@/data/site";
 import { getDictionary } from "@/i18n/dictionaries";
 import { lp, type Locale } from "@/i18n/config";
@@ -16,38 +17,73 @@ const contextIcons: IconName[] = ["layers", "truck", "server", "refresh", "shiel
 export function CollectionContent({ locale = "en" }: { locale?: Locale }) {
   const t = getDictionary(locale);
   const c = t.collection;
-  const subject = encodeURIComponent(c.mailSubject);
-  const body = encodeURIComponent(c.mailBody);
-  const mailtoCollection = `mailto:${site.email}?subject=${subject}&body=${body}`;
+  const f = t.collectionForm;
   const crumbs = [
     { name: t.breadcrumbs.home, path: lp(locale, "/") },
     { name: t.breadcrumbs.collection, path: lp(locale, "/collection") },
   ];
+  const points =
+    locale === "fr"
+      ? [
+          "Certifié R2v3 — chaîne de possession complète",
+          "Collecte sur place gratuite dans le Grand Montréal",
+          "Destruction sécurisée des données avec certificats sérialisés",
+        ]
+      : [
+          "R2v3 certified — full documented chain of custody",
+          "Free on-site collection across Greater Montréal",
+          "Secure data destruction with serialized certificates",
+        ];
 
   return (
     <>
       <JsonLd data={breadcrumbSchema(crumbs)} />
 
-      <section className="bg-near-black py-[clamp(40px,6vw,72px)] text-white">
+      {/* Hero + lead form (top of page) */}
+      <section id="request-collection" className="bg-near-black py-[clamp(36px,5vw,64px)] text-white">
         <Container>
           <Breadcrumbs light items={crumbs} />
-          <Eyebrow light>{c.eyebrow}</Eyebrow>
-          <h1 className="mt-3 max-w-[22ch] text-[clamp(34px,5.4vw,56px)]">{c.h1}</h1>
-          <p className="mt-5 max-w-[58ch] text-[clamp(16px,2vw,19px)] text-[#d6e5db]">{c.intro}</p>
-          <div className="mt-7 flex flex-wrap items-center gap-3.5">
-            <Button href={mailtoCollection} variant="primary" size="lg" icon="arrow-right">
-              {t.common.requestCollection}
-            </Button>
-            <Button href={`tel:${site.phone.tel}`} variant="ghost" size="lg" icon="phone">
-              {site.phone.display}
-            </Button>
-          </div>
-          <div className="mt-7">
-            <CertBadge variant="dark" size={52} locale={locale} />
+          <div className="mt-2 grid gap-[clamp(28px,4vw,56px)] lg:grid-cols-[1fr_1.02fr]">
+            {/* Left: pitch */}
+            <div>
+              <Eyebrow light>{c.eyebrow}</Eyebrow>
+              <h1 className="mt-3 max-w-[18ch] text-[clamp(30px,4.6vw,50px)]">{c.h1}</h1>
+              <p className="mt-5 max-w-[52ch] text-[clamp(16px,2vw,18px)] text-[#d6e5db]">{c.intro}</p>
+              <ul className="mt-6 grid gap-3">
+                {points.map((p) => (
+                  <li key={p} className="flex items-start gap-2.5">
+                    <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-2/20 text-green-2">
+                      <Icon name="check" size={14} />
+                    </span>
+                    <span className="text-[15px] text-[#e7efe9]">{p}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap items-center gap-4">
+                <a
+                  href={`tel:${site.phone.tel}`}
+                  className="inline-flex items-center gap-2 text-[15px] font-semibold text-white transition-colors hover:text-green-2"
+                >
+                  <Icon name="phone" size={16} className="text-green-2" />
+                  {site.phone.display}
+                </a>
+                <CertBadge variant="dark" size={46} locale={locale} />
+              </div>
+            </div>
+
+            {/* Right: the form */}
+            <div data-reveal className="rounded-xl2 border border-line bg-white p-6 text-ink shadow-[0_30px_60px_-30px_rgba(0,0,0,0.6)] sm:p-8">
+              <h2 className="text-[clamp(20px,2.6vw,26px)]">{f.title}</h2>
+              <p className="mt-1.5 text-[14.5px] text-ink-soft">{f.intro}</p>
+              <div className="mt-5">
+                <CollectionForm locale={locale} />
+              </div>
+            </div>
           </div>
         </Container>
       </section>
 
+      {/* How it works */}
       <Section tone="light">
         <Container>
           <div data-reveal className="max-w-[60ch]">
@@ -76,6 +112,7 @@ export function CollectionContent({ locale = "en" }: { locale?: Locale }) {
         </Container>
       </Section>
 
+      {/* Who / what we collect */}
       <Section tone="paper">
         <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr]">
@@ -111,6 +148,7 @@ export function CollectionContent({ locale = "en" }: { locale?: Locale }) {
         </Container>
       </Section>
 
+      {/* Free vs secure */}
       <Section tone="light">
         <Container>
           <div className="grid gap-6 lg:grid-cols-2">
@@ -141,21 +179,19 @@ export function CollectionContent({ locale = "en" }: { locale?: Locale }) {
         </Container>
       </Section>
 
-      <section className="bg-forest py-[clamp(44px,6vw,76px)] text-white">
+      {/* Closing CTA → scroll back to the form */}
+      <section className="bg-forest py-[clamp(40px,5vw,68px)] text-white">
         <Container>
           <div data-reveal className="max-w-[60ch]">
-            <h2 className="text-[clamp(26px,4vw,40px)]">{c.ctaTitle}</h2>
+            <h2 className="text-[clamp(24px,3.6vw,36px)]">{c.ctaTitle}</h2>
             <p className="mt-4 text-[clamp(16px,2vw,18px)] text-[#cfe6d6]">{c.ctaBody(site.phone.display)}</p>
             <div className="mt-7 flex flex-wrap items-center gap-3.5">
-              <Button href={mailtoCollection} variant="orange" size="lg" icon="arrow-right">
-                {t.common.requestCollection}
+              <Button href="#request-collection" variant="orange" size="lg" icon="arrow-right">
+                {f.submit}
               </Button>
               <Button href={lp(locale, "/contact")} variant="ghost" size="lg">
                 {t.common.generalContact}
               </Button>
-            </div>
-            <div className="mt-8">
-              <CertBadge variant="dark" size={48} locale={locale} />
             </div>
           </div>
         </Container>
