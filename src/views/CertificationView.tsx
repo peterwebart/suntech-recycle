@@ -48,7 +48,13 @@ export function CertificationContent({ locale = "en" }: { locale?: Locale }) {
             <p className="mt-5 max-w-[56ch] text-[clamp(16px,2vw,19px)] text-[#d6e5db]">{r2v3.lead}</p>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <div className="rounded-xl2 border border-white/15 bg-white/[0.04] p-8">
+            <a
+              href="https://sustainableelectronics.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit SERI, the body behind the R2v3 standard (opens in a new tab)"
+              className="rounded-xl2 border border-white/15 bg-white/[0.04] p-8 transition-opacity hover:opacity-80"
+            >
               <Image
                 src="/images/r2v3-logo.png"
                 alt="SERI R2v3 certified electronics recycler logo"
@@ -56,7 +62,7 @@ export function CertificationContent({ locale = "en" }: { locale?: Locale }) {
                 height={201}
                 className="h-auto w-[160px] sm:w-[200px]"
               />
-            </div>
+            </a>
           </div>
         </Container>
       </section>
